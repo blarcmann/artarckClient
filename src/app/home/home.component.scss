@@ -1,0 +1,84 @@
+$a: '/assets/imgs/Dark-Crystal-Ryze.jpg';
+$b: '/assets/imgs/Irelia-fanart.jpg';
+$c: '/assets/imgs/Dark-Crystal-Ryze.jpg';
+$d: '/assets/imgs/Irelia-fanart.jpg';
+$e: '/assets/imgs/Dark-Crystal-Ryze.jpg';
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 320px;
+    @media(max-width: 767px) {
+        height: 232px;
+    }
+    .item {
+      display: flex;
+      flex-grow: 1;
+      transition: all .5s ease;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        flex-grow: 4;
+        box-shadow: inset 0 0 20px #000;
+      }
+      &:after {
+        content: "";
+        width: 200%;
+        height: 43.33%;
+        background-color: rgba(#000, 0.75);
+        left: -50%;
+        bottom: -10%;
+        position: absolute;
+        transform: rotate(-15deg);
+        color: #fff;
+        text-align: center;
+        padding-top: 20px;
+        text-transform: uppercase;
+        font-size: 35px;
+        font-family: 'Open Sans';
+        font-weight: 100;
+        @media(max-width: 767px) {
+            font-size: 27px;
+        }
+      }
+      &.a {
+        background-image: url($a);
+        background-position: 70% center;
+        &:after {
+          content: "AAAAA";
+        }
+      }
+      &.b {
+        background-image: url($b);
+        background-position: 45% center;
+        &:after {
+          content: "BBBBB";
+        }
+      }
+      &.c {
+        background-image: url($c);
+        background-position: 70% center;
+        &:after {
+          content: "CCCCCC";
+        }
+      }
+      &.d {
+        background-image: url($d);
+        background-position: 70% center;
+        &:after {
+          content: "DDDDD";
+        }
+      }
+      &.e {
+        background-image: url($e);
+        background-position: 75% center;
+        &:after {
+          content: "EEEEEEE";
+        }
+      }
+    }
+  }
