@@ -1,2 +1,97 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<mat-drawer-container class="header-container" autosize>
+
+    <mat-drawer #drawer class="data-sidenav" (click)="drawer.toggle()" role="navigation">
+      <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+  
+    <div class="page-container-content">
+      <mat-toolbar color="primary">
+        <mat-toolbar-row class="top-header">
+          <div class="show-for-small-only">
+            <div class="mobile-header">
+              <div class="toggle-icon">
+                <mat-icon (click)="drawer.toggle()" class="example-icon">menu</mat-icon>
+              </div>
+              <div class="mobile-logo">
+                <img src="/assets/icons/logo.png" alt="logo">
+              </div>
+              <div class="quick-menu">
+                <div *ngIf="token" class="valid-token">
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                  <mat-menu #menu="matMenu">
+                    <button routerLink="/profile" mat-menu-item>
+                      <mat-icon>person_outline</mat-icon>
+                      <span>Account</span>
+                    </button>
+                    <button (click)="logout()" mat-menu-item>
+                      <mat-icon>person_add_disabled</mat-icon>
+                      <span>Logout</span>
+                    </button>
+                  </mat-menu>
+                </div>
+                <div *ngIf="!token" class="invalid-token">
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                  <mat-menu #menu="matMenu">
+                    <button routerLink="/login" mat-menu-item>
+                      <mat-icon>vpn_key</mat-icon>
+                      <span>login</span>
+                    </button>
+                    <button routerLink="/signup" mat-menu-item>
+                      <mat-icon>person_add</mat-icon>
+                      <span>Signup</span>
+                    </button>
+                  </mat-menu>
+                </div>
+                <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div class="show-for-big-only">
+            <div class="desktop-header">
+              <div class="desktop-logo">
+                <img src="/assets/icons/logo.png" alt="logo">
+              </div>
+              <div class="search-bar">
+                <input matInput placeholder="Search for Artist, Work and Siggys" [(ngModel)]="searchTerm" (keyup.enter)="search()">
+                <button>Search</button>
+              </div>
+              <div class="quick-menu">
+                <div *ngIf="token" class="valid-token">
+                  <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                  <mat-menu  #menu="matMenu">
+                    <button routerLink="/profile" mat-menu-item>
+                      <mat-icon>person_outline</mat-icon>
+                      <span>My Account</span>
+                    </button>
+                    <button (click)="logout()" mat-menu-item>
+                      <mat-icon>person_add_disabled</mat-icon>
+                      <span>Logout</span>
+                    </button>
+                  </mat-menu>
+                </div>
+                <div *ngIf="!token" class="invalid-token">
+                  <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                  <mat-menu #menu="matMenu">
+                    <button routerLink="/login" mat-menu-item>
+                      <mat-icon>vpn_key</mat-icon>
+                      <span>Login</span>
+                    </button>
+                    <button routerLink="/signup" mat-menu-item>
+                      <mat-icon>person_add</mat-icon>
+                      <span>Signup</span>
+                    </button>
+                  </mat-menu>
+                </div>
+                <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+              </div>
+            </div>
+          </div>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="hide-for-small-up">
+            <input matInput placeholder="" class="with-icon" [(ngModel)]="searchTerm" (keyup.enter)="search()">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
