@@ -1,0 +1,20 @@
+section {
+    min-height: 100vh;
+    .register-link {
+        color: #7db557;
+    }
+    &.login {
+        margin: 20px auto;
+    }
+    .form-container {
+        mat-card {
+            margin-top: 15px;
+        }
+        .register-link {
+            text-decoration: underline;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+  }

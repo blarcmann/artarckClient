@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,8 @@ export class AppComponent implements OnInit {
   isCollapsed = true;
   searchTerm = '';
 
-  constructor() {}
+  constructor(private router: Router,
+              private data: DataService) {}
 
   ngOnInit() {}
 
@@ -27,7 +30,11 @@ export class AppComponent implements OnInit {
     dropdown.close();
   }
 
-  logout() {}
+  logout() {
+    this.data.user = {};
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 
   search() {}
 

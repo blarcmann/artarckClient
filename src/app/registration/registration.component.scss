@@ -1,0 +1,14 @@
+section {
+  min-height: 100vh;
+  &.registration {
+      margin: 20px auto;
+  }
+  .form-container {
+      mat-card {
+          margin-top: 15px;
+      }
+      .each-info {
+        margin: 7px auto;
+      }
+  }
+}

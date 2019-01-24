@@ -1,0 +1,48 @@
+<section class="registration">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <p class="text-center">
+          <app-message></app-message>
+        </p>
+        <div class="form-container">
+          <h3 class="text-center">Join Artarck</h3>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Be part of this amazing community!</mat-card-title>
+            </mat-card-header>
+            <form>
+              <div class="each-info">
+                <mat-form-field>
+                  <input matInput placeholder="Name" name="name" ([ngModel])="name">
+                </mat-form-field>
+              </div>
+              <div class="each-info">
+                <mat-form-field>
+                  <input matInput placeholder="Email" name="email" ([ngModel])="email">
+                </mat-form-field>
+              </div>
+              <div class="each-info">
+                <mat-form-field>
+                  <input matInput placeholder="Password" name="password" ([ngModel])="password">
+                </mat-form-field>
+              </div>
+              <div class="each-info">
+                <mat-form-field>
+                  <input matInput placeholder="Confirm Password" name="password1" ([ngModel])="email">
+                </mat-form-field>
+              </div>
+              <div class="each-info">
+                <mat-checkbox [(ngModel)]="isSeller" name="agree" name="isSeller" required color="accent">Register as
+                  an exhibitor</mat-checkbox>
+              </div>
+              <div class="each-info text-center">
+                <button type="button" mat-raised-button color="primary" (click)="register()" [disabled]="btnDisabled">Register</button>
+              </div>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

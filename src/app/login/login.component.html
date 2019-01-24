@@ -1,0 +1,37 @@
+<section class="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <p class="text-center">
+          <app-message></app-message>
+        </p>
+        <div class="form-container">
+          <h3 class="text-center">Login to Artarck</h3>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Not yet a member?
+                <span class="register-link" routerLink="/register">Join Us!</span>
+              </mat-card-title>
+            </mat-card-header>
+            <form>
+              <div class="each-info">
+                <mat-form-field>
+                  <input matInput placeholder="Your email" name="email" ([ngModel])="email">
+                </mat-form-field>
+              </div>
+              <div class="each-info">
+                <mat-form-field>
+                  <input matInput placeholder="Password" name="password" ([ngModel])="password">
+                </mat-form-field>
+              </div>
+              <div class="each-info">
+                <button type="button" mat-raised-button color="primary" (click)="login()" 
+                [disabled]="btnDisabled">Continue</button>
+              </div>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
