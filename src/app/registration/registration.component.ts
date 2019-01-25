@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
 
-import { User } from '../models/User';
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -34,10 +32,10 @@ export class RegistrationComponent implements OnInit {
             if (this.password === this.password1) {
               return true;
             } else {
-              this.data.error('Not matching...Check and try again');
+              this.data.error('Password does not match...Check and try again');
             }
           } else {
-            this.data.error('Confirmation paaword is not entered');
+            this.data.error('Confirmation password is not entered');
           }
         } else {
           this.data.error('Password field is empty');
@@ -55,25 +53,28 @@ export class RegistrationComponent implements OnInit {
     this.btnDisabled = true;
     try {
       if (this.validate()) {
+        console.log('Data valiadated!');
         const data = await this.rest.post(
-          `${this.apiUrl}/accounts/signup`,
+          'http://localhost:3000/api/accounts/signup',
           {
             name: this.name,
             email: this.email,
             password: this.password,
-            password1: this.password1,
             isSeller: this.isSeller
           }
         );
         if (data['success']) {
           localStorage.setItem('token', data['token']);
           this.data.success('Registration Successful');
+          console.log('Registration successful!');
         } else {
           this.data.error(data['message']);
         }
       }
     } catch (error) {
       this.data.error(error['message']);
+      console.log(error['message']);
+      console.log('Registration failed :(');
     }
 
   }

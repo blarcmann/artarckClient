@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   async login() {
     try {
       if (this.validate()) {
-        const data = this.rest.post(`${this.apiUrl}/accounts/login`, {
+        const data = await this.rest.post(`${this.apiUrl}/accounts/login`, {
           email: this.email,
           password: this.password
         });

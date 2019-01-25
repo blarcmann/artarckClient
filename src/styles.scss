@@ -24,3 +24,9 @@ body {
 mat-form-field {
     width: 100%;
 }
+
+mat-icon {
+    &:hover {
+        cursor: pointer;
+    }
+}

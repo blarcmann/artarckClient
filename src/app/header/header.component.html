@@ -12,7 +12,7 @@
             <div class="toggle-icon">
               <mat-icon (click)="drawer.toggle()" class="example-icon">menu</mat-icon>
             </div>
-            <div class="mobile-logo">
+            <div class="mobile-logo" routerLink="/">
               <img src="/assets/icons/logo.png" alt="logo">
             </div>
             <div class="quick-menu">
@@ -36,13 +36,13 @@
                     <mat-icon>vpn_key</mat-icon>
                     <span>login</span>
                   </button>
-                  <button routerLink="/signup" mat-menu-item>
+                  <button routerLink="/register" mat-menu-item>
                     <mat-icon>person_add</mat-icon>
                     <span>Signup</span>
                   </button>
                 </mat-menu>
               </div>
-              <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+              <mat-icon routerLink="/register">shopping_cart</mat-icon>
             </div>
           </div>
         </div>
@@ -76,13 +76,13 @@
                     <mat-icon>vpn_key</mat-icon>
                     <span>Login</span>
                   </button>
-                  <button routerLink="/signup" mat-menu-item>
+                  <button routerLink="/register" mat-menu-item>
                     <mat-icon>person_add</mat-icon>
                     <span>Signup</span>
                   </button>
                 </mat-menu>
               </div>
-              <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+              <mat-icon routerLink="/register">shopping_cart</mat-icon>
             </div>
           </div>
         </div>

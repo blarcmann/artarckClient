@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 
 import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
+import { AuthGuardService } from './auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -33,7 +34,7 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [RestApiService, DataService],
+  providers: [RestApiService, DataService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
