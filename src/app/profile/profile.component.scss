@@ -26,7 +26,11 @@ section.profile {
         }
     }
     .profile-welcome {
-        font-weight: bold;
+        font-weight: normal;
+        margin: 10px auto 20px;
+        span {
+            font-weight: bold;
+        }
     }
     .seller-container {
         margin: 10px auto;

@@ -17,8 +17,8 @@ body {
     margin: 0; 
     font-family: 'Open Sans', 'Roboto', sans-serif; 
 }
-.section {
-    min-height: 600px;
+.section, section {
+    min-height: 100vh;
 }
 
 mat-form-field {

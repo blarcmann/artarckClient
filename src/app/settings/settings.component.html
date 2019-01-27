@@ -1,15 +1,19 @@
 <section class="settings">
+  <div *ngIf="!currentSettings" class="text-center loading-bar">
+    <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+  </div>
   <div class="container pb-5 pt-5">
-    <div class="title">My Account Settings</div>
+    <div class="title">My Account Information</div>
     <app-message></app-message>
-    <div *ngIf="currentSettings" class="text-center display-3 mt-5">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
     <div class="col-lg-5 offset-lg-3">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>
-            
+          <mat-card-title *ngIf="!currentSettings">
+            Account Settings
+          </mat-card-title>
+          <mat-card-title *ngIf="currentSettings">
+            Settings for @{{data.user.name}}
           </mat-card-title>
         </mat-card-header>
         <mat-divider></mat-divider>
@@ -25,7 +29,8 @@
             </mat-form-field>
             <br>
             <mat-form-field>
-              <input type="password" name="newPwd" matInput placeholder="New Password" [(ngModel)]="currentSettings.newPwd" required>
+              <input type="password" name="newPwd" matInput placeholder="New Password" [(ngModel)]="currentSettings.newPwd"
+                required>
             </mat-form-field>
             <br>
             <mat-form-field>
@@ -33,7 +38,7 @@
             </mat-form-field>
             <p>
               <br>
-              <mat-checkbox [(ngModel)]="currentSettings.isSeller" name="isSeller" color="accent">Is Seller</mat-checkbox>
+              <mat-checkbox [(ngModel)]="currentSettings.isSeller" name="isSeller" color="warn">Become a Seller</mat-checkbox>
               <br>
             </p>
 

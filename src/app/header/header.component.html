@@ -3,7 +3,6 @@
   <mat-drawer #drawer class="data-sidenav" (click)="drawer.toggle()" role="navigation">
     <p>Auto-resizing sidenav</p>
   </mat-drawer>
-
   <div class="page-container-content">
     <mat-toolbar color="primary">
       <mat-toolbar-row class="top-header">
@@ -17,11 +16,11 @@
             </div>
             <div class="quick-menu">
               <div *ngIf="token" class="valid-token">
-              <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button routerLink="/profile" mat-menu-item>
                     <mat-icon>person_outline</mat-icon>
-                    <span>Account</span>
+                    <span>My Account</span>
                   </button>
                   <button (click)="logout()" mat-menu-item>
                     <mat-icon>person_add_disabled</mat-icon>
@@ -30,7 +29,7 @@
                 </mat-menu>
               </div>
               <div *ngIf="!token" class="invalid-token">
-              <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button routerLink="/login" mat-menu-item>
                     <mat-icon>vpn_key</mat-icon>
@@ -58,7 +57,7 @@
             <div class="quick-menu">
               <div *ngIf="token" class="valid-token">
                 <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
-                <mat-menu  #menu="matMenu">
+                <mat-menu #menu="matMenu">
                   <button routerLink="/profile" mat-menu-item>
                     <mat-icon>person_outline</mat-icon>
                     <span>My Account</span>
@@ -88,8 +87,8 @@
         </div>
       </mat-toolbar-row>
       <mat-toolbar-row class="hide-for-small-up">
-          <input matInput placeholder="" class="with-icon" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-          <button type="submit"><i class="fa fa-search"></i></button>
+        <input matInput placeholder="" class="with-icon" [(ngModel)]="searchTerm" (keyup.enter)="search()">
+        <button type="submit"><i class="fa fa-search"></i></button>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
