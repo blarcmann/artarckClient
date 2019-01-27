@@ -19,9 +19,10 @@
                 <div *ngIf="token" class="valid-token">
                 <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
                   <mat-menu #menu="matMenu">
-                    <button routerLink="/profile" mat-menu-item>
+                    <button *ngIf="data.user" routerLink="/profile" mat-menu-item>
                       <mat-icon>person_outline</mat-icon>
-                      <span>Account</span>
+                      <span *ngIf="!token">My Account</span>
+                      <span *ngIf="data.user">{{ data.user.name | uppercase }}</span>
                     </button>
                     <button (click)="logout()" mat-menu-item>
                       <mat-icon>person_add_disabled</mat-icon>
@@ -61,7 +62,8 @@
                   <mat-menu  #menu="matMenu">
                     <button routerLink="/profile" mat-menu-item>
                       <mat-icon>person_outline</mat-icon>
-                      <span>My Account</span>
+                      <span *ngIf="!token">My Account</span>
+                      <span *ngIf="data.user">{{ data.user.name | uppercase }}</span>
                     </button>
                     <button (click)="logout()" mat-menu-item>
                       <mat-icon>person_add_disabled</mat-icon>

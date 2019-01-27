@@ -1,0 +1,51 @@
+<section class="profile">
+  <div class="container">
+    <!-- <div class="profile-name" *ngIf="data.user">{{ data.user.name | uppercase }}'s Profile</div>
+    <div class="profile-name" *ngIf="!data.user">My Profile</div> -->
+    <div *ngIf="!data.user" class="no-user-spinner">
+      <div class="text-center">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <!-- <mat-spinner
+          [mode]="indeterminate">
+        </mat-spinner> -->
+        <!-- <mat-spinner></mat-spinner> -->
+        <h4 class="no-user-info">Fetching your profile information : ) </h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+          <p class="profile-welcome" id="name">Hi, {{ data.user.name | uppercase }} </p>
+        <img [src]="data.user.picture" alt="userImage" class="rounded-circle profile-img image">
+      </div>
+
+      <div class="col-md-8 ml-3">
+        <div class="seller-container">
+          <p class="quick-action" id="name"> Quick actions </p>
+          <a mat-raised-button color="accent" routerLink="/profile/orders">My Orders</a>
+          <br>
+          <br>
+          <a mat-raised-button color="accent" routerLink="/profile/settings">Change Account Settings</a>
+          <br>
+          <br>
+          <a mat-raised-button color="accent" routerLink="/profile/address">Change Shipping Address</a>
+          <br>
+          <br>
+          <div *ngIf="data.user.isSeller">
+            <p class="quick-action">Seller Options</p>
+            <hr>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <a routerLink="/profile/postproduct" class="btn btn-outline-success btn-block">Post product for sale</a>
+              </div>
+              <div class="col-md-6">
+                <a routerLink="/profile/myproducts" class="btn btn-outline-success btn-block">My Products</a>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

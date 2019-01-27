@@ -12,8 +12,11 @@ export class AppComponent implements OnInit {
   isCollapsed = true;
   searchTerm = '';
 
-  constructor(private router: Router,
-              private data: DataService) {}
+  constructor(
+    private router: Router,
+    private data: DataService) {
+      this.data.getProfile();
+    }
 
   ngOnInit() {}
 

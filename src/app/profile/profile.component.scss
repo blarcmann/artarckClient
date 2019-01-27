@@ -1,0 +1,65 @@
+section.profile {
+    min-height: 100vh;
+    padding: 20px;
+    font-weight: 300 !important;
+    .no-user-spinner {
+        margin: 11px auto;
+        .no-user-info {
+            margin: 5px auto;
+        }
+        mat-spinner {
+            margin: 10px auto;
+        }
+    }
+    .btn-block {
+        height: 40px;
+        padding: 9px 10px;
+    }
+    img.profile-img {
+        width: 188px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        // border-radius: 10%;
+        @media(min-width: 768px) {
+            width: 170px;
+        }
+    }
+    .profile-welcome {
+        font-weight: bold;
+    }
+    .seller-container {
+        margin: 10px auto;
+        .quick-action {
+            color: #c2185b;
+            font-size: 16px;
+            font-weight: bold;
+            @media(min-width: 768px) {
+                font-size: 20px;
+                font-weight: normal;
+            }
+        }
+        // .quick-action-card {
+        //     padding: 10px 5px;
+        //     -webkit-box-shadow: 2px 2px 19px -1px rgba(0,0,0,0.56);
+        //     -moz-box-shadow: 2px 2px 19px -1px rgba(0,0,0,0.56);
+        //     box-shadow: 2px 2px 19px -1px rgba(0,0,0,0.56);
+        //     border-radius: 5px;
+        //     p {
+        //         color: #c2185b;
+        //         font-size: 16px;
+        //         font-weight: bold;
+        //         @media(min-width: 768px) {
+        //             font-size: 20px;
+        //             font-weight: normal;
+        //         }
+        //     }
+        //     a.quick-links {
+        //         // display: block;
+        //         text-decoration: none;
+        //         margin: 7px auto;
+        //         font-size: 15px;
+        //     }
+        // }
+    }
+}
