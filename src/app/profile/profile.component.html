@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf="data.user">
       <div class="col-md-3">
         <div class="profile-welcome" id="name">Hey, <span>{{ data.user.name | uppercase }}</span> </div>
         <img [src]="data.user.picture" alt="userImage" class="rounded-circle profile-img image">
