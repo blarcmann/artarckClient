@@ -1,0 +1,46 @@
+<section class="categories">
+  <div *ngIf="!categories">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div *ngIf="!categories" class="no-user-spinner">
+    <div class="text-center">
+      <h4 class="no-user-info">Fetching Categories </h4>
+    </div>
+  </div>
+  <div class="container p-5">
+    <app-message></app-message>
+    <h4 class="display-4">Categories</h4>
+    <hr>
+    <div *ngIf="categories" class="list-group">
+      <button mat-raised-button routerLink="/categories/{{category._id}}" class="pt-1 pb-1 mt-1" *ngFor="let category of categories">
+        {{category.name | uppercase}}
+      </button>
+      <mat-divider></mat-divider>
+    </div>
+    <hr style="margin-top: 8rem;">
+    <div class="mt-5">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h3>Add a new Category</h3>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <br>
+        <mat-card-content>
+          <mat-form-field>
+            <input type="text" name="newCategory" matInput placeholder="Add new Category" [(ngModel)]="newCategory">
+          </mat-form-field>
+
+          <br>
+          <button type="button" mat-raised-button color="accent" (click)="addCategory()" [disabled]="btnDisabled">Add
+            Category</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+<!-- <app-footer></app-footer> -->
+
+<!-- class="list-group-item list-group-item-action" -->
