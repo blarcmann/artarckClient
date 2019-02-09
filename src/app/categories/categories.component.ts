@@ -11,6 +11,8 @@ import { RestApiService } from '../rest-api.service';
 export class CategoriesComponent implements OnInit {
   baseUrl = 'http://localhost:3000';
   categories: any;
+  btnDisabled = false;
+  newCategory: any;
   constructor(
     private data: DataService,
     private rest: RestApiService
@@ -27,5 +29,20 @@ export class CategoriesComponent implements OnInit {
       this.data.error(error['message']);
     }
   }
+
+  async addCategory() {
+    this.btnDisabled = true;
+    try {
+      const data = await this.rest.post(`${this.baseUrl}/api/categories`, { category: this.newCategory });
+      data['success']
+        ? this.data.success(data['message'])
+        : this.data.error(data['message']);
+    } catch (error) {
+      this.data.error(error['message']);
+    }
+    this.btnDisabled = false;
+  }
+
+
 
 }

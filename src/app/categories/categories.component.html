@@ -8,37 +8,46 @@
       <h4 class="no-user-info">Fetching Categories </h4>
     </div>
   </div>
+  <div class="container">
+      <app-message></app-message>
+      <h4 class="sect-title">Categories</h4>
+  </div>
   <div class="container p-5">
-    <app-message></app-message>
-    <h4 class="display-4">Categories</h4>
-    <hr>
-    <div *ngIf="categories" class="list-group">
-      <button mat-raised-button routerLink="/categories/{{category._id}}" class="pt-1 pb-1 mt-1" *ngFor="let category of categories">
+    <div *ngIf="categories" class="row">
+      <button mat-raised-button routerLink="/categories/{{category._id}}" class="col-md-3 col-xs-6 category-item"
+        *ngFor="let category of categories">
         {{category.name | uppercase}}
       </button>
-      <mat-divider></mat-divider>
     </div>
-    <hr style="margin-top: 8rem;">
-    <div class="mt-5">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            <h3>Add a new Category</h3>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-divider></mat-divider>
-        <br>
-        <mat-card-content>
-          <mat-form-field>
-            <input type="text" name="newCategory" matInput placeholder="Add new Category" [(ngModel)]="newCategory">
-          </mat-form-field>
+    <h4 class="sub-sect create text-center">You can as well create a new category</h4>
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <div class="mt-2">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                Add New Category
+              </mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-card-content>
+              <mat-form-field>
+                <input type="text" name="newCategory" matInput placeholder="Add new Category" [(ngModel)]="newCategory">
+              </mat-form-field>
 
-          <br>
-          <button type="button" mat-raised-button color="accent" (click)="addCategory()" [disabled]="btnDisabled">Add
-            Category</button>
-        </mat-card-content>
-      </mat-card>
+              <br>
+              <div class="text-center">
+                <button type="button" mat-raised-button color="warn" (click)="addCategory()" [disabled]="btnDisabled">Add
+                  Category
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 <!-- <app-footer></app-footer> -->

@@ -1,0 +1,75 @@
+<section class="post-product">
+  <div *ngIf="!categories">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div *ngIf="!categories" class="no-user-spinner">
+    <div class="text-center">
+      <h4 class="no-user-info">Fetching Categories... </h4>
+    </div>
+  </div>
+  <div *ngIf="categories" class="col-md-8 offset-md-2 pb-5">
+    <h4 class="sect-title">Post a product for sale</h4>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>Product details</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <br>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <input type="text" name="title" matInput placeholder="Product title" [(ngModel)]="product.title" required>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input type="number" name="price" matInput placeholder="Product price" [(ngModel)]="product.price" required>
+          </mat-form-field>
+          <br>
+          <!-- <mat-form-field>
+            <mat-select placeholder="Select Category" [(ngModel)]="product.categoryId">
+              <mat-option *ngFor="let category  of categories" [value]="category._id" required>
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <!-- <label>Category</label>
+            <select name="categoryId" [(ngModel)]="product.categoryId" class="custom-select bgCategory">
+              <option *ngFor="let category of categories" class="bgCategoryOptions" [value]="category._id">
+                {{category.name}}
+              </option>
+            </select> -->
+
+          <br>
+          <mat-form-field>
+            <mat-select placeholder="Product Category" [(ngModel)]="product.categoryId" name="categoryId">
+              <mat-option *ngFor="let category of categories" [value]="category._id">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <textarea matInput [(ngModel)]="product.description" name="description" rows="7" placeholder="Describe the product"
+              required></textarea>
+          </mat-form-field>
+          <br>
+          <div class="form-group">
+            <label>Upload Image</label>
+            <input type="file" name="file" accept="image/*" class="form-control-file" (change)="fileChange($event)"
+              required>
+          </div>
+          <br>
+          <div class="text-center">
+            <button type="button" mat-raised-button color="warn" (click)="post()" [disabled]="btnDisabled">Post
+              Product
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
