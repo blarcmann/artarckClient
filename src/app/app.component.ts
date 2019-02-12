@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './data.service';
 
@@ -42,3 +42,4 @@ export class AppComponent implements OnInit {
   search() {}
 
 }
+

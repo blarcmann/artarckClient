@@ -1,0 +1,192 @@
+.my-products {
+    $regal-blue: #034378;
+    $san-juan: #2d4e68;
+    $bermuda: #77d7b9;
+    $white: #fff;
+    $black: #000;
+    @mixin cf {
+        &::before,
+        &::after {
+            content: '';
+            display: table;
+        }
+        &::after {
+            clear: both;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    h1 {
+        font-weight: 300;
+    }
+    .sect-title {
+        font-size: 22px;
+        color: #c2185b;
+        font-weight: normal;
+        margin-top: 22px;
+        // padding-left: 3%;
+        margin-bottom: 17px;
+        @media(max-width: 767px) {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 7%;
+            margin-bottom: 10px;
+        }
+    }
+    .card {
+        // float: left;
+        // padding: 0 1.7rem;
+        // width: 50%;
+        margin: 23px 0;
+        .menu-content {
+            @include cf;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            li {
+                display: inline-block;
+            }
+            a {
+                color: yellow;
+                font-weight: bold;
+                &.white {
+                    color: #fff; 
+                }
+                &.lemon {
+                    color: rgb(208, 255, 0);
+                }
+                &.yellow {
+                    color: rgb(223, 255, 42);
+                }
+                span {
+                    color: #3af800;
+                }
+            }
+            span {
+                position: absolute;
+                left: 50%;
+                top: 0;
+                font-size: 12px;
+                font-weight: 700;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .wrapper {
+            background-color: $white;
+            min-height: 360px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 19px 38px rgba($black, 0.3), 0 15px 12px rgba($black, 0.2);
+            &:hover {
+                .data {
+                    transform: translateY(0);
+                }
+            }
+        }
+        .data {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transform: translateY(calc(70px + 1em));
+            transition: transform 0.3s;
+            .content {
+                padding: 1em;
+                position: relative;
+                z-index: 1;
+            }
+        }
+        .author {
+            font-size: 13px;
+            font-weight: 600;
+            color: #3af800;
+        }
+        .title {
+            margin-top: 10px;
+        }
+        .text {
+            height: 60px;
+            margin: 0;
+        }
+        input[type='checkbox'] {
+            display: none;
+        }
+        input[type='checkbox']:checked + .menu-content {
+            transform: translateY(-60px);
+        }
+    }
+
+// Second example styles
+    .example-2 {
+        .wrapper {
+            // background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
+            background: rgb(0,0,0);
+background: radial-gradient(circle, rgba(0,0,0,0.8025794790572479) 0%, rgba(92,92,92,0.8754086107099089) 100%, rgba(3,0,0,1) 100%);
+            &:hover {
+                .menu-content {
+                    span {
+                        transform: translate(-50%, -10px);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .header {
+            @include cf;
+                color: $white;
+                padding: 1em;
+            .date {
+                float: left;
+                font-size: 13px;
+            }
+        }
+        .menu-content {
+            float: right;
+            li {
+                margin: 0 5px;
+                position: relative;
+            }
+            span {
+                transition: all 0.3s;
+                opacity: 0;
+            }
+        }
+        .data {
+            color: $white;
+            transform: translateY(calc(70px + 4em));
+        }
+        .title {
+            a {
+                color: $white;
+            }
+        }
+        .button {
+            display: block;
+            width: 100px;
+            margin: 2em auto 1em;
+            text-align: center;
+            font-size: 13px;
+            color: $white;
+            line-height: 1;
+            position: relative;
+            font-weight: 700;
+            &::after {
+            content: '\2192';
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            transition: all 0.3s;
+            }
+            &:hover {
+                &::after {
+                    transform: translate(5px, -50%);
+                    opacity: 1;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

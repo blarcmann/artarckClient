@@ -19,6 +19,7 @@ export class PostProductComponent implements OnInit {
     description: '',
     product_picture: null
   };
+  image = 'https://hd.unsplash.com/photo-1463415268136-e52a5af54519';
   btnDisabled = false;
   categories: any;
   baseUrl = 'http://localhost:3000/api';
@@ -82,7 +83,9 @@ export class PostProductComponent implements OnInit {
         }
         const data = await this.rest.post(`${this.baseUrl}/seller/products`, form);
         data['success']
-          ? this.data.success(data['message'])
+          ? this.router.navigate(['/profile/myproducts'])
+            .then(() => this.data.success(data['message']))
+            .catch(error => this.data.error(error))
           : this.data.error(data['message']);
       }
     } catch (error) {
