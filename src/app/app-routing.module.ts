@@ -12,11 +12,13 @@ import { AddressComponent } from './address/address.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { MyProductComponent } from './my-product/my-product.component';
+import { CategoryComponent } from './category/category.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'categories', component: CategoriesComponent },
+  { path: 'categories/:id', component: CategoryComponent },
   { path: 'register', component: RegistrationComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },

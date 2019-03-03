@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { RootNgbModule } from './ngb.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
@@ -22,6 +24,7 @@ import { AddressComponent } from './address/address.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { MyProductComponent, TruncatePipe } from './my-product/my-product.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { MyProductComponent, TruncatePipe } from './my-product/my-product.compon
     CategoriesComponent,
     PostProductComponent,
     MyProductComponent,
-    TruncatePipe
+    TruncatePipe,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { MyProductComponent, TruncatePipe } from './my-product/my-product.compon
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule,
+    RootNgbModule
   ],
   providers: [RestApiService, DataService, AuthGuardService],
   bootstrap: [AppComponent]
