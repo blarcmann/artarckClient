@@ -30,3 +30,34 @@ mat-icon {
         cursor: pointer;
     }
 }
+
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none !important;
+}
+
+input:active {
+    outline: none !important;
+    border: none !important;
+}
+
+ngb-rating:focus {
+    border: 0 !important;
+    outline: none !important;
+}
+
+.star {
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    color: silver;
+}
+.full {
+    color: gold;
+}
+
+.half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: gold;
+}

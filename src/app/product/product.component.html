@@ -57,8 +57,8 @@
               <p class="lead d-inline ml-3">{{ review.owner.name }} says:</p>
               <br>
               <br>
-              <!-- <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating> -->
-              <ngb-rating [(rate)]="product.reviews.rating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+              <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+              <!-- <ngb-rating [(rate)]="product.reviews.rating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating> -->
               <br>
               <p class="ml-2 d-inline">{{ review.title }}</p>
               <p class="mt-3"><em>"{{ review.description }}"</em></p>
@@ -73,7 +73,7 @@
             </mat-card-header>
             <mat-divider></mat-divider>
             <br>
-            <!-- <mat-card-content>
+            <mat-card-content>
               <form>
                 <mat-form-field>
                   <input type="text" name="title" matInput placeholder="title" [(ngModel)]="myReview.title" required>
@@ -89,10 +89,10 @@
                 <ngb-rating [(rate)]="myReview.rating" [starTemplate]="t" [readonly]="false" max="5"></ngb-rating>
                 <br>
                 <br>
-                <button type="button" mat-raised-button color="accent" (click)="postReview()"
+                <button type="button" mat-raised-button color="primary" (click)="postReview()"
                   [disabled]="btnDisabled">Share Review</button>
               </form>
-            </mat-card-content> -->
+            </mat-card-content>
           </mat-card>
         </div>
       </div>

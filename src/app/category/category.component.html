@@ -33,6 +33,9 @@
                 </p>
                 <p>{{ product.price | currency }}</p>
               </div>
+              <div class="col-md-6">
+                  <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+              </div>
             </div>
           </div>
         </div>
@@ -43,7 +46,7 @@
        (page)="getProducts($event)"
        pageIndex="page"
        ></mat-paginator> -->
-      <ngb-pagination class="paginateDark" [collectionSize]="category.totalProducts" pageSize  [(page)]="page" (pageChange)="getProducts($event)"></ngb-pagination>
+      <ngb-pagination class="paginateDark" [collectionSize]="category.totalProducts"  [(page)]="page" (pageChange)="getProducts($event)"></ngb-pagination>
     </div>
   </div>
 </section>
