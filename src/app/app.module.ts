@@ -25,6 +25,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { MyProductComponent, TruncatePipe } from './my-product/my-product.component';
 import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CategoryComponent } from './category/category.component';
     PostProductComponent,
     MyProductComponent,
     TruncatePipe,
-    CategoryComponent
+    CategoryComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

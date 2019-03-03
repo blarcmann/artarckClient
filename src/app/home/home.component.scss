@@ -1,84 +1,163 @@
-$a: '/assets/imgs/Dark-Crystal-Ryze.jpg';
-$b: '/assets/imgs/Irelia-fanart.jpg';
-$c: '/assets/imgs/Dark-Crystal-Ryze.jpg';
-$d: '/assets/imgs/Irelia-fanart.jpg';
-$e: '/assets/imgs/Dark-Crystal-Ryze.jpg';
-
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    height: 320px;
-    @media(max-width: 767px) {
-        height: 232px;
-    }
-    .item {
+.homepage {
+  $a: '/assets/imgs/Dark-Crystal-Ryze.jpg';
+  $b: '/assets/imgs/Irelia-fanart.jpg';
+  $c: '/assets/imgs/Dark-Crystal-Ryze.jpg';
+  $d: '/assets/imgs/Irelia-fanart.jpg';
+  $e: '/assets/imgs/Dark-Crystal-Ryze.jpg';
+  .wrapper {
       display: flex;
-      flex-grow: 1;
-      transition: all .5s ease;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-      overflow: hidden;
-      &:hover {
-        flex-grow: 3;
-        box-shadow: inset 0 0 20px #000;
+      flex-direction: row;
+      align-items: stretch;
+      height: 320px;
+      @media(max-width: 767px) {
+          height: 232px;
       }
-      &:after {
-        content: "";
-        width: 200%;
-        height: 43.33%;
-        background-color: rgba(#000, 0.75);
-        left: -50%;
-        bottom: -10%;
-        position: absolute;
-        transform: rotate(-15deg);
-        color: #fff;
-        text-align: center;
-        padding-top: 20px;
-        text-transform: uppercase;
-        font-size: 35px;
-        font-family: 'Open Sans';
-        font-weight: 100;
-        @media(max-width: 767px) {
-            font-size: 27px;
+      .item {
+        display: flex;
+        flex-grow: 1;
+        transition: all .5s ease;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        overflow: hidden;
+        &:hover {
+          flex-grow: 3;
+          box-shadow: inset 0 0 20px #000;
         }
-      }
-      &.a {
-        background-image: url($a);
-        background-position: 70% center;
         &:after {
-          content: "AAAAA";
+          content: "";
+          width: 200%;
+          height: 43.33%;
+          background-color: rgba(#000, 0.75);
+          left: -50%;
+          bottom: -10%;
+          position: absolute;
+          transform: rotate(-15deg);
+          color: #fff;
+          text-align: center;
+          padding-top: 20px;
+          text-transform: uppercase;
+          font-size: 35px;
+          font-family: 'Open Sans';
+          font-weight: 100;
+          @media(max-width: 767px) {
+              font-size: 27px;
+          }
+        }
+        &.a {
+          background-image: url($a);
+          background-position: 70% center;
+          &:after {
+            content: "AAAAA";
+          }
+        }
+        &.b {
+          background-image: url($b);
+          background-position: 45% center;
+          &:after {
+            content: "BBBBB";
+          }
+        }
+        &.c {
+          background-image: url($c);
+          background-position: 70% center;
+          &:after {
+            content: "CCCCCC";
+          }
+        }
+        &.d {
+          background-image: url($d);
+          background-position: 70% center;
+          &:after {
+            content: "DDDDD";
+          }
+        }
+        &.e {
+          background-image: url($e);
+          background-position: 75% center;
+          &:after {
+            content: "EEEEEEE";
+          }
         }
       }
-      &.b {
-        background-image: url($b);
-        background-position: 45% center;
-        &:after {
-          content: "BBBBB";
-        }
-      }
-      &.c {
-        background-image: url($c);
-        background-position: 70% center;
-        &:after {
-          content: "CCCCCC";
-        }
-      }
-      &.d {
-        background-image: url($d);
-        background-position: 70% center;
-        &:after {
-          content: "DDDDD";
-        }
-      }
-      &.e {
-        background-image: url($e);
-        background-position: 75% center;
-        &:after {
-          content: "EEEEEEE";
-        }
-      }
-    }
+  }
+  .process-item {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.process-item .content {
+    margin-left: 100px;
+    line-height: 1.7;
+    font-size: 13px
+}
+
+.process-item .steps {
+    width: 70px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    font-size: 56px;
+    position: relative;
+}
+
+/* .process-item .steps span .text-primary {
+    color: gold;
+} */
+
+.process-item .steps:after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    bottom: 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background: #FFBF00;
+}
+
+.process-item .content {
+    margin-left: 100px;
+    line-height: 1.7;
+    font-size: 13px
+}
+
+.process-item .content h3,
+.process-item .content h4 {
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.headliner {
+    width: 100%;
+    border: 0.5px solid #ebebeb;
+    border-left: none;
+    height: 60px;
+    padding-left: 22px;
+    position: relative;
+}
+
+.headliner:before {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 60px;
+    background-color: #535d5f;
+    position: absolute;
+    top: -1px;
+    left: 0;
+}
+
+.headliner.primary:before, .headline.primary {
+    background-color: #00d7b3; 
+}
+
+.headliner h4 {
+    padding-top: 12px;
+    padding-left: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
   }
