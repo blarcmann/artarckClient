@@ -11,12 +11,14 @@ export class AppComponent implements OnInit {
   title = 'Where Art Lives!';
   isCollapsed = true;
   searchTerm = '';
+  StripeCheckout: any;
 
   constructor(
     private router: Router,
-    private data: DataService
+    public data: DataService
     ) {
       this.data.getProfile();
+      this.data.cartItems = this.data.getCart().length;
     }
 
   ngOnInit() {}
@@ -36,16 +38,17 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.data.user = {};
+    this.data.cartItems = 0;
     localStorage.clear();
     this.router.navigate(['']);
   }
 
-    search() {
-      if (this.searchTerm) {
-        this.router.navigate(['search', { query: this.searchTerm }]);
-        console.log(`${this.searchTerm} entered`);
-      }
-      console.log(`search triggered`);
+  search() {
+    if (this.searchTerm) {
+      this.router.navigate(['search', { query: this.searchTerm }]);
+      console.log(`${this.searchTerm} entered`);
+    }
+    console.log(`search triggered`);
   }
 
 }

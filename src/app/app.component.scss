@@ -46,9 +46,11 @@
             .quick-menu {
                 display: flex;
                 margin-left: auto;
+                position: relative;
+                top: 10px;
                 mat-icon {
                     // margin-right: 5px;
-                    font-size: 28px;
+                    font-size: 23px;
                     &.profile {
                         margin-right: 15px;
                     }

@@ -15,11 +15,13 @@ import { MyProductComponent } from './my-product/my-product.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { SearchComponent } from './search/search.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'categories/:id', component: CategoryComponent },
   { path: 'product/:id', component: ProductComponent },

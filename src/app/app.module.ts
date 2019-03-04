@@ -27,6 +27,7 @@ import { MyProductComponent, TruncatePipe } from './my-product/my-product.compon
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { SearchComponent } from './search/search.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SearchComponent } from './search/search.component';
     TruncatePipe,
     CategoryComponent,
     ProductComponent,
-    SearchComponent
+    SearchComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

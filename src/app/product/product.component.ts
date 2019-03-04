@@ -56,15 +56,9 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('Added toCard!');
+    this.data.addToCart(this.product)
+      ? this.data.success('Product Successfully added to cart!')
+      : this.data.error('Seems, there\'s recursion, please retry!')
   }
 
 }
-
-
-
-
-// M4HRMABA2K == application id
-// 5d287e3004545fb39448354d585deb65  == searchonly API key
-// 179c84f716ec086ae21c9ee084a5d2fd  == admin API key
-// fa84a72395154a67a0e2acf9c14e2090  == monitoring API key
