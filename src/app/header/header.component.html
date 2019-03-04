@@ -52,7 +52,7 @@
             </div>
             <div class="search-bar">
               <input matInput placeholder="Search for Artist, Work and Siggys" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-              <button>Search</button>
+              <button (click)="search()">Search</button>
             </div>
             <div class="quick-menu">
               <div *ngIf="token" class="valid-token">
@@ -88,8 +88,8 @@
       </mat-toolbar-row>
       <mat-toolbar-row class="hide-for-small-up">
         <input matInput placeholder="" class="with-icon" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </mat-toolbar-row>
+        <button (click)="search()"><i class="fa fa-search" (click)="search()"></i></button>
+      </mat-toolbar-row> 
     </mat-toolbar>
   </div>
-</mat-drawer-container>
+</mat-drawer-container> 

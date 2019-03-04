@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private data: DataService) {
+    private data: DataService
+    ) {
       this.data.getProfile();
     }
 
@@ -39,7 +40,13 @@ export class AppComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  search() {}
+    search() {
+      if (this.searchTerm) {
+        this.router.navigate(['search', { query: this.searchTerm }]);
+        console.log(`${this.searchTerm} entered`);
+      }
+      console.log(`search triggered`);
+  }
 
 }
 
