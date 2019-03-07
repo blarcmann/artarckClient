@@ -61,3 +61,24 @@ ngb-rating:focus {
     overflow: hidden;
     color: gold;
 }
+
+.no-user-info {
+    font-size: 18px;
+    margin-top: 13px;
+    @media(max-width: 767px) {
+        font-size: 15px;
+    }
+}
+
+
+.pillz {
+    padding: 4px 10px 6px;
+    font-size: 13px;
+    border-radius: 30px;
+    font-weight: 500;
+    margin: 7px;
+    &.peach {
+        color: #fff;
+        background-color: #dc3545
+    }
+}

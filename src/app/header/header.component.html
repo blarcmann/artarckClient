@@ -11,7 +11,7 @@
             <div class="toggle-icon">
               <mat-icon (click)="drawer.toggle()" class="example-icon">menu</mat-icon>
             </div>
-            <div class="mobile-logo" routerLink="/">
+            <div class="mobile-logo" (click)="rootPage()">
               <img src="/assets/icons/logo.png" alt="logo">
             </div>
             <div class="quick-menu">
@@ -47,7 +47,7 @@
         </div>
         <div class="show-for-big-only">
           <div class="desktop-header">
-            <div class="desktop-logo">
+            <div class="desktop-logo" (click)="rootPage()">
               <img src="/assets/icons/logo.png" alt="logo">
             </div>
             <div class="search-bar">

@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   @Input() disableClose = true;
   token = true;
   searchTerm = '';
+  reviews: any;
   constructor(
     private router: Router,
     private data: DataService) { }
@@ -30,5 +31,9 @@ export class HeaderComponent implements OnInit {
       console.log(`${this.searchTerm} entered`);
     }
       console.log(`search triggered`);
+  }
+
+  rootPage() {
+    this.router.navigate(['/']);
   }
 }
