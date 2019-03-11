@@ -77,7 +77,7 @@
           <div class="col-md-6">
             <div class="recent-reviews">
               <div class="reviews-title">Reviews and Rating</div>
-              <div class="no-reviews" *ngIf="!product.reviews.length || !product.review">
+              <div class="no-reviews" *ngIf="!product.reviews.length">
                   <div class="no-review">Y'all ain't reviewing lately :| </div>
               </div>
               <div class="check-for-reviews" *ngIf="product.reviews && product.reviews.length">

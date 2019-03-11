@@ -13,6 +13,7 @@ export class CategoriesComponent implements OnInit {
   categories: any;
   btnDisabled = false;
   newCategory: any;
+  toggleReview: boolean;
   constructor(
     private data: DataService,
     private rest: RestApiService
@@ -41,6 +42,10 @@ export class CategoriesComponent implements OnInit {
       this.data.error(error['message']);
     }
     this.btnDisabled = false;
+  }
+
+  showAddReview() {
+    this.toggleReview = !this.toggleReview;
   }
 
 

@@ -122,7 +122,7 @@
         .wrapper {
             // background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
             background: rgb(0,0,0);
-background: radial-gradient(circle, rgba(0,0,0,0.8025794790572479) 0%, rgba(92,92,92,0.8754086107099089) 100%, rgba(3,0,0,1) 100%);
+            background: radial-gradient(circle, rgba(0,0,0,.23) 0%, rgba(92, 92, 92, 0.875409) 100%, #030000 100%);
             &:hover {
                 .menu-content {
                     span {

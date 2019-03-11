@@ -12,10 +12,32 @@
     <app-message></app-message>
     <h3 class="text-center mt-5" *ngIf="category && !category.products.length">No product in this category</h3>
     <div class="product" *ngIf="category && category.products.length">
-      <h4 class="sect-title">Category</h4>
+      <h4 class="sect-title">All Products</h4>
       <p> {{ lower }} - {{ upper }} of {{ category.totalProducts }} products in {{ category.categoryName }} </p>
-      <hr>
-      <div class="product" *ngFor="let product of category.products">
+      <!-- <hr> -->
+      <div class="row">
+        <div class="col-md-3"*ngFor="let product of category.products">
+          <a routerLink="/product/{{ product._id }}" class="product-cover">
+            <div class="product-img">
+              <img [src]="product.image" alt="">
+            </div>
+            <div class="product-details">
+              <div class="price-rate">
+                <div class="price">{{ product.price | currency }}</div>
+                <div class="rating">
+                  <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+                </div>
+              </div>
+              <div class="product-title">{{product.title}}</div>
+              <div class="product-owner">
+                <img src="{{ product.owner.picture }}" class="owner-pic" alt="">
+                <div class="owner-name"><i>{{ product.owner.name }}</i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- <div class="product" *ngFor="let product of category.products">
         <div class="row">
           <div class="col-5 col-md-2">
             <a routerLink="/product/{{ product._id }}">
@@ -40,12 +62,7 @@
           </div>
         </div>
         <hr>
-      </div>
-      <!-- <mat-paginator [pageSize]="pageSize"
-       length="{{category.totalProducts}}"
-       (page)="getProducts($event)"
-       pageIndex="page"
-       ></mat-paginator> -->
+      </div> -->
       <ngb-pagination class="paginateDark" [collectionSize]="category.totalProducts"  [(page)]="page" (pageChange)="getProducts($event)"></ngb-pagination>
     </div>
   </div>
