@@ -1,4 +1,4 @@
-<section class="search">
+<section class="search-results">
   <div *ngIf="!content">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -8,38 +8,46 @@
       <h4 class="no-user-info">chill nigga, loading... </h4>
     </div>
   </div>
-  <div class="container p-3 p-md-5">
+  <div class="container">
     <h3 class="display-2 text-center mt-5" *ngIf="content && !content.nbHits">No Results</h3>
     <div *ngIf="content && content.nbHits">
-      <p>{{ lower }} - {{ upper }} of {{ content.nbHits }} results for
-        <span class="text-warning bolder">"{{ query }}"</span>
+      <p class="page-info">{{ lower }} - {{ upper }} of {{ content.nbHits }} results for
+        <span class="search-val bolder">"{{ query }}"</span>
       </p>
-      <hr>
-      <div class="product" *ngFor="let product of content.hits">
+      <div class="container">
         <div class="row">
-          <div class="col-5 col-md-2">
-            <a routerLink="/product/{{ product.objectID }}">
-              <img [src]="product.image" alt="product Image" class="img-fluid img-thumbnail">
-            </a>
-          </div>
-          <div class="col-5 col-md-8">
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <h5>
-                  <a routerLink="/product/{{ product.objectID }}">{{ product.title }}</a>
-                </h5>
-                <p>
-                  <small>by {{ product.owner.name }} </small>
-                </p>
-                <p> {{ product.price | currency }}</p>
+          <div class="col-md-3 each-product" *ngFor="let product of content.hits">
+            <div class="my-content">
+              <div class="top">
+                <div class="entities">
+                  <div class="bonus-off" *ngIf="product.price <= 300">20% 0ff</div>
+                  <div class="bonus-off" *ngIf="product.price > 300">Best price</div>
+                  <!-- <div class="loved">
+                        <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg" class="hearted" name="save-circle">
+                          <g fill="none" fill-rule="evenodd" transform="translate(4 2)">
+                            <circle cx="12" cy="12" fill="#FFF" r="12"></circle>
+                            <path
+                              d="M17.235 8.021a3.316 3.316 0 0 0-2.392-1.013c-.904 0-1.754.36-2.394 1.016l-.334.342-.34-.347A3.333 3.333 0 0 0 9.38 7a3.32 3.32 0 0 0-2.39 1.013A3.471 3.471 0 0 0 6 10.464c0 .926.355 1.793.995 2.448l4.866 4.982a.348.348 0 0 0 .246.106.345.345 0 0 0 .246-.103l4.877-4.974c.64-.655.992-1.525.992-2.45a3.469 3.469 0 0 0-.987-2.452z"
+                              fill="#D8D8D8" fill-rule="nonzero"></path>
+                          </g>
+                        </svg>
+                      </div> -->
+                </div>
+                <div class="image-cover">
+                  <img [src]="product.image" alt="product Image" class="img-fluid result-image">
+                </div>
               </div>
-              <div class="col-md-6">
-                <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+              <div class="bumbum">
+                <div class="product-price"><span>{{ product.price | currency }}</span></div>
+                <div class="product-title">{{ product.title }}</div>
+                <div class="product-dealer">by: <span>{{ product.owner.name }}</span></div>
+              </div>
+              <div class="add-to-cart text-center">
+                <button class="ghost-btn">Add to Cart</button>
               </div>
             </div>
           </div>
         </div>
-        <hr>
       </div>
       <ngb-pagination class="paginateDark" [collectionSize]="content.nbHits" [pageSize]="20" [(page)]="page"
         (pageChange)="getProducts()"></ngb-pagination>
