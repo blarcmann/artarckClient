@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  search() { 
+  search() {
     if (this.searchTerm) {
       this.router.navigate(['search', { query: this.searchTerm }]);
       console.log(`${this.searchTerm} entered`);

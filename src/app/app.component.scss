@@ -1,13 +1,23 @@
 .header-container {
     width: 100%;
+    mat-icon {
+        span {
+            font-size: 14px;
+            @media(max-width: 767px) {
+                font-size: 13px;
+            }
+        }
+    }
     .hide-for-small-up {
         @media(min-width: 768px) {
             display: none !important;
         }
     }
     .data-sidenav {
-        min-height: 100vh;
-        width: 35%;
+        max-height: 100vh;
+        width: 40%;
+        position: fixed;
+        overflow: scroll;
         @media(max-width: 599px) {
             width: 77%;
         }
@@ -99,6 +109,19 @@
                     }
                 }
             }
+            .to-categories {
+                font-size: 14px;
+                font-weight: 600;
+                margin: auto;
+                // position: relative;
+                // top: 4px;
+                a {
+                    color: #fff;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
             .quick-menu {
                 margin-left: auto;
                 padding-top: 4px;
@@ -149,6 +172,44 @@
     mat-toolbar-row.top-header {
         @media(max-width: 767px) {
             height: 48px;
+        }
+    }
+    .side-profile {
+        .top-with-bg {
+            background-image: url('/assets/imgs/bg.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 234px;
+            .img-cover {
+                img {
+                    margin-top: 60px;
+                    border-radius: 50%;
+                    box-shadow: 0px 0px 23px #000;
+                }
+            }
+            .main-info {
+                color: #ffffff;
+                margin: 20px auto 0;
+                .name {
+                    font-size: 14px;
+                    font-weight: 600;
+                    text-shadow: 0px 0px 1px #6610f2;
+                }
+                .type {
+                    font-size: 13px;
+                    font-weight: 500;
+                    text-shadow: 0px 0px 4px #000;
+                }
+            }
+        }
+        .other-user-info {
+            button {
+                width: 100%;
+                padding: 5px 20px;
+                margin: 7px 0;
+                text-align: left;
+                font-size: 13px;
+            }
         }
     }
 }

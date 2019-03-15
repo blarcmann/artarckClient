@@ -1,6 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './data.service';
+import { RestApiService } from './rest-api.service';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +13,33 @@ export class AppComponent implements OnInit {
   isCollapsed = true;
   searchTerm = '';
   StripeCheckout: any;
+  baseUrl = 'http://localhost:3000/api';
+  userProfile: any;
 
-  constructor(
+  constructor (
     private router: Router,
-    public data: DataService
-    ) {
+    private rest: RestApiService,
+    public data: DataService) {
       this.data.getProfile();
       this.data.cartItems = this.data.getCart().length;
+      console.log(data.getProfile());
     }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.getUser();
+  }
+
+  async getUser() {
+    try {
+      const data = await this.rest.get(`${this.baseUrl}/accounts/profile`);
+      console.log(data);
+      data['success']
+        ? this.userProfile = data['user']
+        : this.data.error('Can\'t seem to get your info, pls FO')
+    } catch (error) {
+      this.data.error('Failed to get user data ATM');
+    }
+  }
 
 
   get token() {
@@ -49,6 +67,10 @@ export class AppComponent implements OnInit {
       console.log(`${this.searchTerm} entered`);
     }
     console.log(`search triggered`);
+  }
+
+  rootPage() {
+    this.router.navigate(['/']);
   }
 
 }

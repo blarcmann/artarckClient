@@ -54,6 +54,9 @@
               <input matInput placeholder="Search for Artist, Work and Siggys" [(ngModel)]="searchTerm" (keyup.enter)="search()">
               <button (click)="search()">Search</button>
             </div>
+            <div class="to-categories">
+              <a routerLink="/categories">Categories</a>
+            </div>
             <div class="quick-menu">
               <div *ngIf="token" class="valid-token">
                 <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
