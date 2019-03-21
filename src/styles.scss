@@ -30,7 +30,9 @@ mat-icon {
         cursor: pointer;
     }
 }
-
+.mb-20 {
+    margin-bottom: 20px;
+}
 input:focus, select:focus, textarea:focus, button:focus {
     outline: none !important;
 }

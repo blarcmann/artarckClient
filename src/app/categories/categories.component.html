@@ -84,7 +84,7 @@
             <div *ngIf="categories" class="row">
               <button mat-raised-button 
                 routerLink="/categories/{{category._id}}" 
-                class="col-md-3 col-xs-6 category-item"
+                class="col-md-2 col-xs-6 category-item"
                 *ngFor="let category of categories">
                 {{category.name | uppercase}}
               </button>
