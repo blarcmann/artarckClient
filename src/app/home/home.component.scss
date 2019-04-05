@@ -87,7 +87,7 @@
   .body-container {
     h3.title {
       float: left;
-      font-size: 18px;
+      font-size: 22px;
       color: #c9c9c9;
     }
     width: 90%;
@@ -221,6 +221,9 @@
                   justify-content: space-between;
                   font-size: 13px;
                   color: #333;
+                  .title {
+                    color: #06a852;
+                  }
                 }
                 .category {
                   font-size: 13px;
@@ -332,7 +335,7 @@
       justify-content: center;
     }
     .yo-info {
-      margin: 3em auto;
+      margin: 2em auto;
       .tagline {
         font-size: 28px;
         font-weight: 500;
@@ -345,10 +348,20 @@
           margin: 20px 0;
         }
       }
+      .illustrate {
+        margin: 2em auto;
+        width: 50%;
+        @media(max-width: 767px) {
+          width: 82%;
+        }
+        img {
+          width: 100%;
+        }
+      }
       .discount {
         font-size: 23px;
         font-weight: 400;
-        color: #808080;
+        color: #03b455;
         width: 65%;
         margin: 10px auto;
         @media(max-width: 767px) {

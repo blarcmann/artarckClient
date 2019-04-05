@@ -11,12 +11,12 @@
   <div class="body-container">
     <div class="best-sellers">
       <div class="top-heading">
-        <h3 class="title">Best Selling Categories</h3>
-        <ul class="category-items" *ngIf="categories && categories.length">
+        <h3 class="title">Best Selling</h3>
+        <!-- <ul class="category-items hide" *ngIf="categories && categories.length">
           <li class="each-category" *ngFor="let category of categories">
             <a [routerLink]="['/categories', category._id]">{{category.name}}</a>
           </li>
-        </ul>
+        </ul> -->
         <div class="category-items" *ngIf="!categories || !categories.length">
           <a routerLink="/categories">See All Categories</a>
         </div>
@@ -24,12 +24,12 @@
       <div class="contenter">
         <div class="horizontal-scroll-wrapper squares">
           <div class="each-item" *ngFor="let product of products">
-            <div class="top-banner">
+            <div class="top-banner"  routerLink="/product/{{ product._id }}">
               <img [src]="product.image" [alt]="product.name">
             </div>
-            <div class="details">
+            <div class="details"  routerLink="/product/{{ product._id }}">
               <div class="title-price">
-                <div class="title">{{product.name}}</div>
+                <div class="title">{{product.title}}</div>
                 <div class="price">{{product.price | currency}}</div>
               </div>
               <div class="category">
@@ -93,6 +93,11 @@
 
     <div class="yo-info">
       <p class="tagline text-center">Glance into the world of creativity & imaginations from the best minds around!</p>
+
+      <div class="illustrate">
+        <img src="/assets/imgs/decision.svg" alt="Winks">
+      </div>
+
       <p class="discount text-center">Making your first order rightaway??</p>
       <p class="discount-tag text-center">Recieve 15% off your next</p>
     </div>
