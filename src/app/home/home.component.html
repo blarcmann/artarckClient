@@ -12,22 +12,14 @@
     <div class="best-sellers">
       <div class="top-heading">
         <h3 class="title">Best Selling</h3>
-        <!-- <ul class="category-items hide" *ngIf="categories && categories.length">
-          <li class="each-category" *ngFor="let category of categories">
-            <a [routerLink]="['/categories', category._id]">{{category.name}}</a>
-          </li>
-        </ul> -->
-        <div class="category-items" *ngIf="!categories || !categories.length">
-          <a routerLink="/categories">See All Categories</a>
-        </div>
       </div>
-      <div class="contenter">
+      <div class="contenter" *ngIf="products && products.length">
         <div class="horizontal-scroll-wrapper squares">
           <div class="each-item" *ngFor="let product of products">
-            <div class="top-banner"  routerLink="/product/{{ product._id }}">
+            <div class="top-banner" routerLink="/product/{{ product._id }}">
               <img [src]="product.image" [alt]="product.name">
             </div>
-            <div class="details"  routerLink="/product/{{ product._id }}">
+            <div class="details" routerLink="/product/{{ product._id }}">
               <div class="title-price">
                 <div class="title">{{product.title}}</div>
                 <div class="price">{{product.price | currency}}</div>
@@ -39,7 +31,70 @@
           </div>
         </div>
       </div>
+      <div class="loader-ish" *ngIf="fetching && !products || !products.length">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="!fetching && products.length == 0">
+        <h2>Seems something went wrong :(</h2>
+      </div>
     </div>
+    <div class="yo-info">
+      <p class="tagline text-center">Glance into the world of creativity & imaginations from the best minds around!</p>
+
+      <div class="illustrate">
+        <img src="/assets/imgs/decision.svg" alt="Winks">
+      </div>
+
+      <p class="discount text-center">Making your first order rightaway??</p>
+      <p class="discount-tag text-center">Recieve 15% off your next</p>
+    </div>
+    <div class="best-sellers">
+      <div class="top-heading">
+        <h3 class="title">Whacky Picks</h3>
+      </div>
+      <div class="contenter" *ngIf="products && products.length">
+        <div class="horizontal-scroll-wrapper squares">
+          <div class="each-item" *ngFor="let product of products">
+            <div class="top-banner" routerLink="/product/{{ product._id }}">
+              <img [src]="product.image" [alt]="product.name">
+            </div>
+            <div class="details" routerLink="/product/{{ product._id }}">
+              <div class="title-price">
+                <div class="title">{{product.title}}</div>
+                <div class="price">{{product.price | currency}}</div>
+              </div>
+              <div class="category">
+                {{product.category.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loader-ish" *ngIf="fetching && !products || !products.length">
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="!fetching && products.length == 0">
+        <h2>Seems something went wrong :(</h2>
+      </div>
+    </div>
+
+    <div class="categories-list" *ngIf="categories && categories.length">
+      <div class="each-category" [routerLink]="['/categories', category._id]" *ngFor="let category of categories">
+        <span><img src="./assets/icons/hyper.svg" alt=""></span> {{category.name}}
+      </div>
+    </div>
+    <div class="no-caregories" *ngIf="!categories || !categories.length">
+      <p class="centre">
+        <mat-spinner></mat-spinner>
+      </p>
+    </div>
+
     <div class="trending">
       <h3 class="title">A mix of trending</h3>
       <div class="container-cover">
@@ -56,50 +111,6 @@
         <img src="./assets/imgs/trending02.jpg" alt="">
         <img src="./assets/imgs/trending9.jpg" alt="">
       </div>
-    </div>
-    <div class="categories-list" *ngIf="categories && categories.length">
-      <div class="each-category" [routerLink]="['/categories', category._id]" *ngFor="let category of categories">
-        <span><img src="./assets/icons/hyper.svg" alt=""></span> {{category.name}}
-      </div>
-    </div>
-    <div class="no-caregories" *ngIf="!categories || !categories.length">
-      <p class="centre">
-        <mat-spinner></mat-spinner>
-      </p>
-    </div>
-    <div class="best-sellers">
-      <div class="top-heading">
-        <h3 class="title">Whacky Picks</h3>
-      </div>
-      <div class="contenter">
-        <div class="horizontal-scroll-wrapper squares">
-          <div class="each-item" *ngFor="let product of products">
-            <div class="top-banner">
-              <img [src]="product.image" [alt]="product.name">
-            </div>
-            <div class="details">
-              <div class="title-price">
-                <div class="title">{{product.title}}</div>
-                <div class="price">{{product.price | currency}}</div>
-              </div>
-              <div class="category">
-                {{product.category.name}} 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="yo-info">
-      <p class="tagline text-center">Glance into the world of creativity & imaginations from the best minds around!</p>
-
-      <div class="illustrate">
-        <img src="/assets/imgs/decision.svg" alt="Winks">
-      </div>
-
-      <p class="discount text-center">Making your first order rightaway??</p>
-      <p class="discount-tag text-center">Recieve 15% off your next</p>
     </div>
   </div>
 </section>

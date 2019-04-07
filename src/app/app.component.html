@@ -1,120 +1,142 @@
 <mat-drawer-container class="header-container" autosize>
 
-    <mat-drawer #drawer class="data-sidenav" (click)="drawer.toggle()" role="navigation">
-      <div class="side-profile" *ngIf="userProfile">
-        <div class="top-with-bg">
-          <div class="img-cover text-center">
-            <img [src]="userProfile.picture" alt="">
-          </div>
-          <div class="main-info">
-            <div class="name text-center">{{userProfile.name}}</div>
-            <div class="type text-center" *ngIf="userProfile.isSeller">Seller's Account</div>
-            <div class="type text-center" *ngIf="!userProfile.isSeller">Regular Account</div>
-          </div> 
+  <mat-drawer #drawer class="data-sidenav" (click)="drawer.toggle()" role="navigation">
+    <div class="side-profile" *ngIf="userProfile">
+      <div class="top-with-bg">
+        <div class="img-cover text-center">
+          <img [src]="userProfile.picture" alt="">
         </div>
-        <div class="other-user-info">
-          <button mat-button routerLink="/profile"><mat-icon color="warn">keyboard_arrow_down</mat-icon> My Profile</button>
-          <button mat-button routerLink="/profile/myproducts" *ngIf="userProfile.isSeller"><mat-icon color="primary"> favorite</mat-icon>My Products</button>
-          <button mat-button routerLink="/profile/settings" ><mat-icon>whatshot</mat-icon> Account Settings</button>
-          <button mat-raised-button color="warn" click="logout()"><mat-icon>power_settings_new</mat-icon> Logout</button>
+        <div class="main-info">
+          <div class="name text-center">{{userProfile.name}}</div>
+          <div class="type text-center" *ngIf="userProfile.isSeller">Seller's Account</div>
+          <div class="type text-center" *ngIf="!userProfile.isSeller">Regular Account</div>
         </div>
       </div>
-    </mat-drawer>
-  
-    <div class="page-container-content">
-      <mat-toolbar color="primary">
-        <mat-toolbar-row class="top-header">
-          <div class="show-for-small-only">
-            <div class="mobile-header">
-              <div class="toggle-icon">
-                <mat-icon (click)="drawer.toggle()" class="example-icon">menu</mat-icon>
-              </div>
-              <div class="mobile-logo" (click)="rootPage()">
-                <img src="/assets/icons/logo.png" alt="logo">
-              </div>
-              <div class="quick-menu">
-                <!-- <div *ngIf="token" class="valid-token">
+      <div class="other-user-info">
+        <button mat-button routerLink="/profile">
+          <mat-icon color="warn">keyboard_arrow_down</mat-icon> My Profile
+        </button>
+        <button mat-button routerLink="/profile/myproducts" *ngIf="userProfile.isSeller">
+          <mat-icon color="primary"> favorite</mat-icon>My Products
+        </button>
+        <button mat-button routerLink="/profile/settings">
+          <mat-icon>whatshot</mat-icon> Account Settings
+        </button>
+        <button mat-raised-button color="warn" click="logout()">
+          <mat-icon>power_settings_new</mat-icon> Logout
+        </button>
+      </div>
+    </div>
+    <div class="user-inactive" *ngIf="!userProfile">
+      <div class="top-logo">
+        <img src="/assets/icons/logoblack.png" alt="logo">
+      </div>
+      <div class="inactive-actions">
+        <p>Hey, would you like to</p>
+        <button mat-button routerLink="/register"> Create an Account? </button>
+        <button mat-button routerLink="/login">Login to your Account? </button>
+        <button mat-button routerLink="/profile/settings"> See some Good Good? </button>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="page-container-content">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row class="top-header">
+        <div class="show-for-small-only">
+          <div class="mobile-header">
+            <div class="toggle-icon">
+              <mat-icon (click)="drawer.toggle()" class="example-icon">menu</mat-icon>
+            </div>
+            <div class="mobile-logo" (click)="rootPage()">
+              <img src="/assets/icons/logo.png" alt="logo">
+            </div>
+            <div class="quick-menu">
+              <div *ngIf="token" class="valid-token">
                 <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
-                  <mat-menu #menu="matMenu">
-                    <button *ngIf="data.user" routerLink="/profile" mat-menu-item>
-                      <mat-icon>person_outline</mat-icon>
-                      <span *ngIf="!token">My Account</span>
-                      <span *ngIf="data.user">{{ data.user.name}}</span>
-                    </button>
-                    <button (click)="logout()" mat-menu-item>
-                      <mat-icon>person_add_disabled</mat-icon>
-                      <span>Logout</span>
-                    </button>
-                  </mat-menu>
-                </div>
-                <div *ngIf="!token" class="invalid-token">
-                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
-                  <mat-menu #menu="matMenu">
-                    <button routerLink="/login" mat-menu-item>
-                      <mat-icon>vpn_key</mat-icon>
-                      <span>login</span>
-                    </button>
-                    <button routerLink="/signup" mat-menu-item>
-                      <mat-icon>person_add</mat-icon>
-                      <span>Signup</span>
-                    </button>
-                  </mat-menu>
-                </div> -->
-                <mat-icon matBadge="{{data.cartItems}}" matBadgePosition="before" matBadgeColor="warn" routerLink="/cart">shopping_cart</mat-icon>
-                <mat-icon routerLink="/categories">more_vert</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button *ngIf="data.user" routerLink="/profile" mat-menu-item>
+                    <mat-icon>person_outline</mat-icon>
+                    <span *ngIf="!token">My Account</span>
+                    <span *ngIf="data.user">{{ data.user.name}}</span>
+                  </button>
+                  <button (click)="logout()" mat-menu-item>
+                    <mat-icon>person_add_disabled</mat-icon>
+                    <span>Logout</span>
+                  </button>
+                </mat-menu>
               </div>
+              <div *ngIf="!token" class="invalid-token">
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button routerLink="/login" mat-menu-item>
+                    <mat-icon>vpn_key</mat-icon>
+                    <span>login</span>
+                  </button>
+                  <button routerLink="/signup" mat-menu-item>
+                    <mat-icon>person_add</mat-icon>
+                    <span>Signup</span>
+                  </button>
+                </mat-menu>
+              </div>
+              <mat-icon matBadge="{{data.cartItems}}" matBadgePosition="before" matBadgeColor="warn" routerLink="/cart">
+                shopping_cart</mat-icon>
+              <!-- <mat-icon routerLink="/categories">more_vert</mat-icon> -->
             </div>
           </div>
-          <div class="show-for-big-only">
-            <div class="desktop-header">
-              <div class="desktop-logo" (click)="rootPage()">
-                <img src="/assets/icons/logo.png" alt="logo">
+        </div>
+        <div class="show-for-big-only">
+          <div class="desktop-header">
+            <div class="desktop-logo" (click)="rootPage()">
+              <img src="/assets/icons/logo.png" alt="logo">
+            </div>
+            <div class="search-bar">
+              <input matInput placeholder="Search for Artist, Work and Siggys" [(ngModel)]="searchTerm"
+                (keyup.enter)="search()">
+              <button (click)="search()">Search</button>
+            </div>
+            <div class="to-categories">
+              <a routerLink="/categories">All Categories</a>
+            </div>
+            <div class="quick-menu">
+              <div *ngIf="token" class="valid-token">
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button routerLink="/profile" mat-menu-item>
+                    <mat-icon>person_outline</mat-icon>
+                    <span *ngIf="!token">My Account</span>
+                    <span *ngIf="data.user">{{ data.user.name }}</span>
+                  </button>
+                  <button (click)="logout()" mat-menu-item>
+                    <mat-icon>person_add_disabled</mat-icon>
+                    <span>Logout</span>
+                  </button>
+                </mat-menu>
               </div>
-              <div class="search-bar">
-                <input matInput placeholder="Search for Artist, Work and Siggys" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-                <button (click)="search()">Search</button>
+              <div *ngIf="!token" class="invalid-token">
+                <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button routerLink="/login" mat-menu-item>
+                    <mat-icon>vpn_key</mat-icon>
+                    <span>Login</span>
+                  </button>
+                  <button routerLink="/signup" mat-menu-item>
+                    <mat-icon>person_add</mat-icon>
+                    <span>Signup</span>
+                  </button>
+                </mat-menu>
               </div>
-              <div class="to-categories">
-                <a routerLink="/categories">All Categories</a>
-              </div>
-              <div class="quick-menu">
-                <div *ngIf="token" class="valid-token">
-                  <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
-                  <mat-menu  #menu="matMenu">
-                    <button routerLink="/profile" mat-menu-item>
-                      <mat-icon>person_outline</mat-icon>
-                      <span *ngIf="!token">My Account</span>
-                      <span *ngIf="data.user">{{ data.user.name }}</span>
-                    </button>
-                    <button (click)="logout()" mat-menu-item>
-                      <mat-icon>person_add_disabled</mat-icon>
-                      <span>Logout</span>
-                    </button>
-                  </mat-menu>
-                </div>
-                <div *ngIf="!token" class="invalid-token">
-                  <mat-icon [matMenuTriggerFor]="menu" class="profile">person</mat-icon>
-                  <mat-menu #menu="matMenu">
-                    <button routerLink="/login" mat-menu-item>
-                      <mat-icon>vpn_key</mat-icon>
-                      <span>Login</span>
-                    </button>
-                    <button routerLink="/signup" mat-menu-item>
-                      <mat-icon>person_add</mat-icon>
-                      <span>Signup</span>
-                    </button>
-                  </mat-menu>
-                </div>
-                <mat-icon matBadge="{{data.cartItems}}" matBadgePosition="before" matBadgeColor="warn" routerLink="/cart">shopping_cart</mat-icon>
-              </div>
-            </div> 
+              <mat-icon matBadge="{{data.cartItems}}" matBadgePosition="before" matBadgeColor="warn" routerLink="/cart">
+                shopping_cart</mat-icon>
+            </div>
           </div>
-        </mat-toolbar-row>
-        <mat-toolbar-row class="hide-for-small-up">
-            <input matInput placeholder="" class="with-icon" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-            <button (click)="search()"><i class="fa fa-search"></i></button>
-        </mat-toolbar-row>
-      </mat-toolbar>
-      <router-outlet></router-outlet>
-    </div>
-  </mat-drawer-container>
+        </div>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="hide-for-small-up">
+        <input matInput placeholder="" class="with-icon" [(ngModel)]="searchTerm" (keyup.enter)="search()">
+        <button (click)="search()"><i class="fa fa-search"></i></button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

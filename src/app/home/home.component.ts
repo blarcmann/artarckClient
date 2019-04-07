@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   products: any;
   categories: any;
   baseUrl: 'http://localhost:3000/api';
+  fetching: boolean =  false;
   constructor(
     private rest: RestApiService,
     private data: DataService
@@ -18,37 +19,27 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     try {
+      this.fetching = true;
       const data = await this.rest.get(`http://localhost:3000/api/products`);
       data['success']
         ? (this.products = data['products'])
         : this.data.error('Could not fetch Products');
         console.log(data);
     } catch (error) {
+      this.fetching = false;
       this.data.error(error['message']);
     }
     try {
+      this.fetching = true;
       const data = await this.rest.get(`http://localhost:3000/api/categories`);
       console.log(data);
       data['success']
         ? (this.categories = data['categories'])
         : this.data.error(data['message']);
     } catch (error) {
+      this.fetching = false;
       this.data.error(error['message']);
     }
   }
-
-  // fetchCategories() {
-  //   // try {
-  //     const data = this.rest.get(`http://localhost:3000/api/categories`);
-  //     console.log(data);
-  //     data['success']
-  //       ? (this.categories = data['categories'])
-  //       : this.data.error('An error occured from our end, Please retry');
-  //   // } catch (error) {
-  //   //   this.data.error(error['message']);
-  //   // }
-  // }
-
-
 
 }

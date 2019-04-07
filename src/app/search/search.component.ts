@@ -38,9 +38,11 @@ export class SearchComponent implements OnInit {
   async getProducts() {
     this.content = null;
     try {
-      const data = await this.rest.get(`${this.baseUrl}/search?query=${this.query}&page=${this.page - 1}`);
+      const data = await this.rest.get(`${this.baseUrl}/search/q?queryParam=${this.query}&page=${this.page - 1}`);
+      console.log('data', data);
+      this.data = this.content;
       data['success']
-        ? (this.content = data['content'])
+        ? (this.content = data)
         : this.data.error(data['message']);
     } catch (error) {
       this.data.error(error['message']);
