@@ -8,6 +8,9 @@
             margin: 10px auto;
         }
     }
+    .paginatn {
+        margin-top: 2em;
+    }
     .sect-title {
         font-size: 22px;
         color: #c2185b;
@@ -69,7 +72,8 @@
                 text-transform: uppercase;
             }
             .product-owner {
-                display: flex;
+                // display: flex;
+                display: none;
                 justify-content: center;
                 img {
                     width: 30px;
