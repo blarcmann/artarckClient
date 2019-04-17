@@ -16,17 +16,18 @@
       <p> {{ lower }} - {{ upper }} of {{ category.totalProducts }} products in {{ category.categoryName }} </p>
       <!-- <hr> -->
       <div class="row">
-        <div class="col-md-3"*ngFor="let product of category.products">
+        <div class="col-md-4 col-lg-3 col-sm-6" *ngFor="let product of category.products">
           <a routerLink="/product/{{ product._id }}" class="product-cover">
             <div class="product-img">
               <img [src]="product.image" alt="">
             </div>
             <div class="product-details">
               <div class="price-rate">
-                <div class="price">{{ product.price | currency }}</div>
                 <div class="rating">
-                  <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+                  <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5">
+                  </ngb-rating>
                 </div>
+                <div class="price">{{ product.price | currency }}</div>
               </div>
               <div class="product-title">{{product.title}}</div>
               <div class="product-owner">
@@ -63,11 +64,12 @@
         </div>
         <hr>
       </div> -->
-      <ngb-pagination class="paginateDark" [collectionSize]="category.totalProducts"  [(page)]="page" (pageChange)="getProducts($event)"></ngb-pagination>
+      <ngb-pagination class="paginateDark" [collectionSize]="category.totalProducts" [(page)]="page"
+        (pageChange)="getProducts($event)"></ngb-pagination>
     </div>
   </div>
 </section>
- 
+
 <ng-template #t let-fill="fill">
   <span *ngIf="fill === 100" class="star full">&#9733;</span>
   <span *ngIf="fill === 0" class="star">&#9733;</span>

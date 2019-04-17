@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
     this.activatedRoute.params.subscribe((res) => {
       this.rest.get(`${this.baseUrl}/product/${res['id']}`)
         .then(data => {
+          console.log( data['product'])
           data['success']
             ? (this.product = data['product'])
             : this.router.navigate(['/']);

@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(data => {
       this.quantities.push(1);
     });
+    console.log(this.cartItems)
     this.handler = StripeCheckout.configure({
       key: environment.stripeKey,
       image: 'assets/icons/logo.png',

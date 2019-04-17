@@ -4,4 +4,132 @@
         -webkit-appearance: none;
         margin: 0;
     }
+    .no-cart-items {
+        color: rgb(5, 56, 0);
+    }
+
+    .checkout-header {
+        margin-bottom: 23px;
+        .title {
+            font-size: 23px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0;
+        }
+        span.extra {
+            display: block;
+            color: #888;
+        }
+    }
+
+    .checkout-body {
+        // margin: 20px auto;
+        width: 100%;
+        .cart-item {
+            padding: 22px 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: rgba(255,255,255,.5);
+            width: 100%;
+            margin: 30px auto;
+            @media(max-width: 767px) {
+                padding: 8px;
+                margin: 11px auto;
+            }
+            @media(min-width: 992px) {
+                width: 77%;
+            }
+            .right-col {
+                display: flex;
+                justify-content: space-evenly;
+                @media(max-width: 767px) {
+                    justify-content: space-around;
+                }
+                .item-image {
+                    width: 66px;
+                    height: 66px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                    }
+                }
+                .item-others {
+                    .pick-tags {
+                        font-size: 12px;
+                        color: #fff;
+                        padding: 3px 6px;
+                        margin: 5px 0;
+                        max-width: max-content;
+                        border-radius: 1px;
+                        &.a1 { background-color: #dc3545; }
+                        &.a2 { background-color: #007bff }
+                        &.a3 { background-color: #28a745}
+                        &.a4 { background-color: #673ab7 }
+                    }
+                    .item-title {
+                        a {
+                            text-decoration: none;
+                            text-align: center;
+                            color: #222;
+                            font-weight: 600;
+                            font-size: 12px;
+                            margin: 5px auto;
+                        }
+                    }
+                    .item-id {
+                        color: #888;
+                        display: block;
+                        font-size: 13px;
+                    }
+                }
+            }
+            .left-col {
+                display: flex;
+                justify-content: space-evenly;
+                @media(max-width: 767px) {
+                    justify-content: space-around;
+                    margin-top: 12px;
+                }
+                .edit-amount {
+                    input {
+                        border: 1px solid #999;
+                        border-radius: 2px;
+                        height: 34px;
+                        width: 60px;
+                        padding: 6px;
+                        color: #555;
+                        font-size: 17px;
+                        position: relative;
+                        top: 10px;
+                    }
+                }
+                .rightmost {
+                    .product-price {
+                        margin: 2px auto;
+                        span.pprice {
+                            color: #333;
+                            font-size: 14px;
+                            font-weight: 600;
+                            display: block;
+                        }
+                    }
+                    .buy-later {
+                        color: #00d846;
+                        margin: 5px auto;
+                    }
+                    .del {
+                        margin: 2px auto;
+                        a {
+                            text-decoration: none;
+                            font-size: 12px;
+                            color: #888;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+   
 }

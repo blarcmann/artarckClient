@@ -1,10 +1,74 @@
 <section class="cart">
-  <div class="container-fluid p-5">
+  <div class="container">
+
     <app-message></app-message>
-    <h3 class="text-center display-2 mt-5" *ngIf="!cartItems.length">Cart is empty</h3>
+
+    <div class="row" *ngIf="!cartItems.length">
+      <h4 class="text-center no-cart-items display-2 mt-5">You wantu checkout ofurufu ni? ;[
+      </h4>
+    </div>
+
+    <div class="row" *ngIf="cartItems.length">
+      <div class="col-md-12">
+        <div class="checkout-header">
+          <div class="title">Your Cart</div>
+          <span class="extra">You have {{cartItems.length}} item(s) in your cart</span>
+        </div>
+      </div>
+      <div class="checkout-body">
+        <div class="cart-item" *ngFor="let item of cartItems; let i=index, trackBy: trackByCartItems">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="right-col">
+                <div class="item-image">
+                  <a routerLink="/product/{{ item._id }}">
+                    <img src="{{ item.image }}" alt="{{ item.owner.name }} image" class="img-fluid">
+                  </a>
+                </div>
+                <div class="item-others">
+                  <!--  -->
+                  <div class="item-title">
+                    <a class="product-title" routerLink="/product/{{ item._id }}">{{ item.title }}</a>
+                  </div>
+                  <!--  -->
+                  <div class="item-id"> 
+                    <span>ID: {{item._id.substring(0, 7)}}</span>
+                  </div>
+                  <div class="pick-tags a1" *ngIf="item.price <= 100">Cheapest outchea</div>
+                  <div class="pick-tags a2" *ngIf="item.price <= 200">Great Pick</div>
+                  <div class="pick-tags a3" *ngIf="item.price <= 300">Kapachumari</div>
+                  <div class="pick-tags a4" *ngIf="item.price > 300 ">Marichupako</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="left-col">
+                <div class="edit-amount">
+                  <input type="number" class="change-val" min="1" max="99" matInput [(ngModel)]="quantities[i]"
+                    name="quantity">
+                </div>
+                <div class="rightmost">
+                  <div class="product-price">
+                    <span class="pprice">{{ cartTotal | currency }}</span>
+                  </div>
+                  <a routerLink="/" class="buy-later">Save for later</a>
+                  <div class="del">
+                    <a class="remove" (click)="removeProduct(i, item)">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <div *ngIf="cartItems.length" class="row">
       <div class="col-md-9">
-        <p class="lead font-weight-bold"> Shopping Cart</p>
+        <p class="lead font-weight-bold">Your Cart</p>
+        <span class="extra mb-20">You have {{cartItems.length}} items in your cart</span>
         <div class="row">
           <div class="offset-8 col-2 d-none d-md-block">
             <p>
