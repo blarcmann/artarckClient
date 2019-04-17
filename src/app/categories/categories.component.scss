@@ -78,5 +78,32 @@
             display: none;
         }
     }
-
+    .name-contain {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1em;
+        @media(min-width: 992px) {
+            margin-top: 3em;
+        }
+        .name-cover {
+            padding: 10px 16px;
+            margin: 10px auto;
+            background-color: #fff;
+            border: 1px solid #20c9977a;
+            border-radius: 3px;
+            a {
+                text-decoration: none;
+                margin: auto;
+                display: block;
+                font-size: 13px;
+                font-weight: 300;
+                color: #333;
+                text-transform: capitalize;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }

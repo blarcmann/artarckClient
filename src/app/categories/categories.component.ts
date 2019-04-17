@@ -14,15 +14,20 @@ export class CategoriesComponent implements OnInit {
   btnDisabled = false;
   newCategory: any;
   toggleReview: boolean;
+  checkAddAbility = false;
   constructor(
     private data: DataService,
     private rest: RestApiService
   ) { }
 
   async ngOnInit() {
+    if (localStorage.getItem('token') != '') {
+      this.checkAddAbility = true;
+    } else {
+      this.checkAddAbility = false;
+    }
     try {
       const data = await this.rest.get(`${this.baseUrl}/api/categories`);
-      console.log(data);
       data['success']
         ? (this.categories = data['categories'])
         : this.data.error(data['message']);
