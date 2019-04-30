@@ -6,16 +6,16 @@
 // purple-green.css
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-html, body { 
+html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     font-size: 13px !important;
 }
 
-body { 
-    margin: 0; 
-    font-family: 'Open Sans', 'Roboto', sans-serif; 
+body {
+    margin: 0;
+    font-family: 'Open Sans', 'Roboto', sans-serif;
 }
 .section, section {
     min-height: 100vh;
@@ -79,6 +79,10 @@ ngb-rating:focus {
     @media(max-width: 767px) {
         font-size: 15px;
     }
+}
+
+.hide {
+  display: none;
 }
 
 

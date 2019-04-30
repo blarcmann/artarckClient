@@ -3,7 +3,7 @@
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-  <div *ngIf="!content" class="no-user-spinner">
+  <div *ngIf="!content && !noResult" class="no-user-spinner">
     <div class="text-center">
       <h4 class="no-user-info">chill nigga, loading... </h4>
     </div>
@@ -15,6 +15,12 @@
   </div> -->
   <div class="container">
     <h3 class="display-2 text-center mt-5" *ngIf="content && content.length == 0">No Results</h3>
+    <div class="no-result" *ngIf="noResult">
+      <h3 class="text-center noResult mt-5 display-4">We ain't findin' shit, mbok search beta thing :\</h3>
+      <p class="text-center">
+        <button routerLink="/" class=" btn btn-success btn-lg btn-outline text-center mt-3 mb-5 mx-auto">Bounce</button>
+      </p>
+    </div>
     <div *ngIf="content && content.length != 0">
       <p class="page-info p-20">Showing results for <span class="search-val bolder">"{{ query }}"</span> </p>
       <div class="container">

@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   page = 1;
   content: any;
   baseUrl = 'http://localhost:3000/api';
+  noResult = false;
   constructor(
     private data: DataService,
     private rest: RestApiService,
@@ -24,7 +25,12 @@ export class SearchComponent implements OnInit {
       this.query = res['query'];
       this.page = 1;
       this.getProducts();
-    })
+    });
+    if (!this.content) {
+      setTimeout(() => {
+        this.noResult = true;
+      }, 10000);
+    }
   }
 
   get lower() {
@@ -48,6 +54,5 @@ export class SearchComponent implements OnInit {
       this.data.error(error['message']);
     }
   }
-
 
 }

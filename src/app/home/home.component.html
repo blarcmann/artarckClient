@@ -1,11 +1,11 @@
 <section class="homepage">
   <div class="home-banner">
-    <div class='wrapper'>
-      <div class='item a'></div>
-      <div class='item b'></div>
-      <div class='item c'></div>
-      <div class='item d'></div>
-      <div class='item e'></div>
+    <div class="wrapper">
+      <div class="item a"></div>
+      <div class="item b"></div>
+      <div class="item c"></div>
+      <div class="item d"></div>
+      <div class="item e"></div>
     </div>
   </div>
   <div class="body-container">
@@ -17,21 +17,24 @@
         <div class="horizontal-scroll-wrapper squares">
           <div class="each-item" *ngFor="let product of products">
             <div class="top-banner" routerLink="/product/{{ product._id }}">
-              <img [src]="product.image" [alt]="product.name">
+              <img [src]="product.image" [alt]="product.name" />
             </div>
             <div class="details" routerLink="/product/{{ product._id }}">
               <div class="title-price">
-                <div class="title">{{product.title}}</div>
-                <div class="price">{{product.price | currency}}</div>
+                <div class="title">{{ product.title }}</div>
+                <div class="price">{{ product.price | currency }}</div>
               </div>
               <div class="category">
-                {{product.category.name}}
+                {{ product.category.name }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="loader-ish" *ngIf="fetching && !products || !products.length">
+      <div
+        class="loader-ish"
+        *ngIf="(fetching && !products) || !products.length"
+      >
         <div class="lds-ripple">
           <div></div>
           <div></div>
@@ -42,10 +45,13 @@
       </div>
     </div>
     <div class="yo-info">
-      <p class="tagline text-center">Glance into the world of creativity & imaginations from the best minds around!</p>
+      <p class="tagline text-center">
+        Glance into the world of creativity & imaginations from the best minds
+        around!
+      </p>
 
       <div class="illustrate">
-        <img src="/assets/imgs/decision.svg" alt="Winks">
+        <img src="/assets/imgs/decision.svg" alt="Winks" />
       </div>
 
       <p class="discount text-center">Making your first order rightaway??</p>
@@ -59,21 +65,24 @@
         <div class="horizontal-scroll-wrapper squares">
           <div class="each-item" *ngFor="let product of products">
             <div class="top-banner" routerLink="/product/{{ product._id }}">
-              <img [src]="product.image" [alt]="product.name">
+              <img [src]="product.image" [alt]="product.name" />
             </div>
             <div class="details" routerLink="/product/{{ product._id }}">
               <div class="title-price">
-                <div class="title">{{product.title}}</div>
-                <div class="price">{{product.price | currency}}</div>
+                <div class="title">{{ product.title }}</div>
+                <div class="price">{{ product.price | currency }}</div>
               </div>
               <div class="category">
-                {{product.category.name}}
+                {{ product.category.name }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="loader-ish" *ngIf="fetching && !products || !products.length">
+      <div
+        class="loader-ish"
+        *ngIf="(fetching && !products) || !products.length"
+      >
         <div class="lds-ripple">
           <div></div>
           <div></div>
@@ -84,32 +93,44 @@
       </div>
     </div>
 
+    <h3 class="title mx-auto mt-2 mb-4">Top Categories</h3>
     <div class="categories-list" *ngIf="categories && categories.length">
-      <div class="each-category" [routerLink]="['/categories', category._id]" *ngFor="let category of categories">
-        <span><img src="./assets/icons/hyper.svg" alt=""></span> {{category.name}}
+      <div
+        class="each-category"
+        [routerLink]="['/categories', category._id]"
+        *ngFor="let category of categories"
+      >
+        <span><img src="./assets/icons/hyper.svg" alt=""/></span>
+        {{ category.name }}
       </div>
     </div>
     <div class="no-caregories" *ngIf="!categories || !categories.length">
-      <p class="centre">
-        <mat-spinner></mat-spinner>
-      </p>
+      <div
+        class="loader-ish"
+        *ngIf="(fetching && !products) || !products.length"
+      >
+        <div class="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </div>
 
-    <div class="trending">
+    <div class="trending hide">
       <h3 class="title">A mix of trending</h3>
       <div class="container-cover">
-        <img src="./assets/imgs/trending4.jpg" alt="">
-        <img src="./assets/imgs/trending6.jpg" alt="">
-        <img src="./assets/imgs/trending01.jpg" alt="">
-        <img src="./assets/imgs/trending2.jpg" alt="">
-        <img src="./assets/imgs/trending03.jpg" alt="">
-        <img src="./assets/imgs/trending3.jpg" alt="">
+        <img src="./assets/imgs/trending4.jpg" alt="" />
+        <img src="./assets/imgs/trending6.jpg" alt="" />
+        <img src="./assets/imgs/trending01.jpg" alt="" />
+        <img src="./assets/imgs/trending2.jpg" alt="" />
+        <img src="./assets/imgs/trending03.jpg" alt="" />
+        <img src="./assets/imgs/trending3.jpg" alt="" />
         <!-- <img src="./assets/imgs/trending1.jpg" alt=""> -->
         <!-- <img src="./assets/imgs/trending5.jpg" alt=""> -->
         <!-- <img src="./assets/imgs/trending7.jpg" alt=""> -->
-        <img src="./assets/imgs/trending8.jpg" alt="">
-        <img src="./assets/imgs/trending02.jpg" alt="">
-        <img src="./assets/imgs/trending9.jpg" alt="">
+        <img src="./assets/imgs/trending8.jpg" alt="" />
+        <img src="./assets/imgs/trending02.jpg" alt="" />
+        <img src="./assets/imgs/trending9.jpg" alt="" />
       </div>
     </div>
   </div>

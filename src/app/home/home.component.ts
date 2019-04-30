@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   products: any;
   categories: any;
   baseUrl: 'http://localhost:3000/api';
-  fetching: boolean =  false;
+  fetching = false;
   constructor(
     private rest: RestApiService,
     private data: DataService
