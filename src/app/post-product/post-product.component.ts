@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
+import { MessageServiceService } from '../message-service.service';
 import { FooterRowOutlet } from '@angular/cdk/table';
 
 @Component({
@@ -19,15 +20,16 @@ export class PostProductComponent implements OnInit {
     description: '',
     product_picture: null
   };
-  image = 'https://hd.unsplash.com/photo-1463415268136-e52a5af54519';
   btnDisabled = false;
   categories: any;
+  image = 'https://hd.unsplash.com/photo-1463415268136-e52a5af54519';
   baseUrl = 'http://localhost:3000/api';
 
   constructor(
     private data: DataService,
     private rest: RestApiService,
-    private router: Router
+    private router: Router,
+    private msgService: MessageServiceService
   ) { }
 
   async ngOnInit() {
@@ -35,12 +37,15 @@ export class PostProductComponent implements OnInit {
       const data = await this.rest.get(`${this.baseUrl}/categories`);
       data['success']
         ? (this.categories = data['categories'])
-        : (this.data.error(data['message']));
+        : (this.msgService.openSnackbar(data['message'], 'retry'));
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
     }
   }
 
+  fileChange(event: any) {
+    this.product.product_picture = event.target.files[0];
+  }
 
   validate(product) {
     if (product.title) {
@@ -50,19 +55,24 @@ export class PostProductComponent implements OnInit {
             if (product.product_picture) {
               return true;
             } else {
-              this.data.error('Please do provide product picture');
+              this.msgService.openSnackbar('Please do provide product picture', 'close');
+              console.log('Please do provide product picture');
             }
           } else {
-            this.data.error('Please describe your product (work)');
+            this.msgService.openSnackbar('Please describe your product (work)', 'close');
+            console.log('Please describe your product (work)');
           }
         } else {
-          this.data.error('Please do select a category to proceed');
+          this.msgService.openSnackbar('Please do select a category to proceed', 'close');
+          console.log('Please do select a category to proceed');
         }
       } else {
-        this.data.error('Give value for the product you\'re bout to sell, will you?');
+        this.msgService.openSnackbar('Give value for the product you\'re bout to sell, will you?', 'close');
+        console.log('Give value for the product you\'re bout to sell, will you?');
       }
     } else {
-      this.data.error('The title of your product (work) is compulsory please');
+      this.msgService.openSnackbar('The title of your product (work) is compulsory please', 'close');
+      console.log('The title of your product (work) is compulsory please');
     }
   }
 
@@ -70,7 +80,9 @@ export class PostProductComponent implements OnInit {
   async post() {
     this.btnDisabled = true;
     try {
+      console.log('post call');
       if (this.validate(this.product)) {
+        console.log('product validated');
         const form = new FormData();
         for (const key in this.product) {
           if (this.product.hasOwnProperty(key)) {
@@ -84,12 +96,12 @@ export class PostProductComponent implements OnInit {
         const data = await this.rest.post(`${this.baseUrl}/seller/products`, form);
         data['success']
           ? this.router.navigate(['/profile/myproducts'])
-            .then(() => this.data.success(data['message']))
-            .catch(error => this.data.error(error))
-          : this.data.error(data['message']);
+            .then(() => this.msgService.openSnackbar(data['message'], 'close'))
+            .catch(error => this.msgService.openSnackbar(error, 'retry'))
+          : this.msgService.openSnackbar(data['message'], 'retry');
       }
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
     }
     this.btnDisabled = false;
   }

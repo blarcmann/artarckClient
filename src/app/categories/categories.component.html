@@ -5,84 +5,108 @@
   </div>
   <div *ngIf="!categories" class="no-user-spinner">
     <div class="text-center">
-      <h4 class="no-user-info">Fetching Categories... </h4>
+      <h4 class="no-user-info">Fetching Categories...</h4>
     </div>
   </div>
   <div class="container">
     <app-message></app-message>
     <h4 class="sect-title">All Categories</h4>
     <div class="row">
-      <div class="col-md-3" *ngIf="checkAddAbility">
-        <div class="add-new-category hide-sm">
-          <h4 class="sub-sect create text-center"></h4>
-          <div class="mt-2">
-            <mat-card>
-              <mat-card-header>
-                <mat-card-title>
-                  Add New Category
-                </mat-card-title>
-              </mat-card-header>
-              <mat-divider></mat-divider>
-              <br>
-              <mat-card-content>
-                <mat-form-field>
-                  <input type="text" name="newCategory" matInput placeholder="Add new Category"
-                    [(ngModel)]="newCategory">
-                </mat-form-field>
+      <div class="col-md-3">
+        <ng-container *ngIf="checkAddAbility">
+          <div class="add-new-category hide-sm">
+            <h4 class="sub-sect create text-center"></h4>
+            <div class="mt-2">
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>
+                    Add New Category
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <br />
+                <mat-card-content>
+                  <mat-form-field>
+                    <input
+                      type="text"
+                      name="newCategory"
+                      matInput
+                      placeholder="Add new Category"
+                      [(ngModel)]="newCategory"
+                    />
+                  </mat-form-field>
 
-                <br>
-                <div class="text-center">
-                  <button type="button" mat-raised-button color="warn" (click)="addCategory()"
-                    [disabled]="btnDisabled">Add
-                    Category
-                  </button>
-                </div>
-              </mat-card-content>
-            </mat-card>
+                  <br />
+                  <div class="text-center">
+                    <button
+                      type="button"
+                      mat-raised-button
+                      color="warn"
+                      (click)="addCategory()"
+                      [disabled]="btnDisabled"
+                    >
+                      Add Category
+                    </button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
           </div>
-        </div>
-        <div class="add-new-category hide-md" *ngIf="toggleReview">
-          <!-- <h4 class="sub-sect create text-center">You can as well create a new category</h4> -->
-          <div class="row">
-            <div class="col-md-4 offset-md-4">
-              <div class="mt-2">
-                <mat-card>
-                  <mat-card-header>
-                    <mat-card-title>
-                      Add New Category
-                    </mat-card-title>
-                  </mat-card-header>
-                  <mat-divider></mat-divider>
-                  <br>
-                  <mat-card-content>
-                    <mat-form-field>
-                      <input type="text" name="newCategory" matInput placeholder="Add new Category"
-                        [(ngModel)]="newCategory">
-                    </mat-form-field>
+          <div class="add-new-category hide-md" *ngIf="toggleReview">
+            <!-- <h4 class="sub-sect create text-center">You can as well create a new category</h4> -->
+            <div class="row">
+              <div class="col-md-4 offset-md-4">
+                <div class="mt-2">
+                  <mat-card>
+                    <mat-card-header>
+                      <mat-card-title>
+                        Add New Category
+                      </mat-card-title>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <br />
+                    <mat-card-content>
+                      <mat-form-field>
+                        <input
+                          type="text"
+                          name="newCategory"
+                          matInput
+                          placeholder="Add new Category"
+                          [(ngModel)]="newCategory"
+                        />
+                      </mat-form-field>
 
-                    <br>
-                    <div class="text-center">
-                      <button type="button" mat-raised-button color="warn" (click)="addCategory()"
-                        [disabled]="btnDisabled">Add
-                        Category
-                      </button>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
+                      <br />
+                      <div class="text-center">
+                        <button
+                          type="button"
+                          mat-raised-button
+                          color="warn"
+                          (click)="addCategory()"
+                          [disabled]="btnDisabled"
+                        >
+                          Add Category
+                        </button>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="add-new-sm">
-          <button mat-fab>
-            <mat-icon (click)="showAddReview()">add</mat-icon>
-          </button>
-        </div>
+          <div class="add-new-sm">
+            <button mat-fab>
+              <mat-icon (click)="showAddReview()">add</mat-icon>
+            </button>
+          </div>
+        </ng-container>
       </div>
       <div class="col-md-8 md-offset-1">
         <div class="name-contain">
           <div class="name-cover" *ngFor="let category of categories">
-            <a routerLink="/categories/{{category._id}}">{{category.name}}</a>
+            <a routerLink="/categories/{{ category._id }}">{{
+              category.name
+            }}</a>
           </div>
         </div>
       </div>

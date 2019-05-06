@@ -12,6 +12,9 @@ html, body {
     overflow-x: hidden;
     font-size: 13px !important;
 }
+button:disabled {
+  cursor: not-allowed !important;
+}
 
 body {
     margin: 0;

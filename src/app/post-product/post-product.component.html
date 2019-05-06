@@ -8,7 +8,7 @@
       <h4 class="no-user-info">Fetching available Categories... </h4>
     </div>
   </div>
-  <div *ngIf="categories" class="col-md-8 offset-md-2 pb-5">
+  <div *ngIf="categories" class="col-md-8 col-lg-6 offset-lg-3 offset-md-2 pb-5">
     <h4 class="sect-title">Post a product for sale</h4>
     <mat-card>
       <mat-card-header>
@@ -59,9 +59,9 @@
           <br>
           <div class="form-group">
             <label>Upload Image</label>
-            <!-- <input type="file" name="file" accept="image/*" class="form-control-file" (change)="fileChange($event)"
-              required> -->
-              <input type="file" name="file" accept="image/*" class="form-control-file" required>
+            <input type="file" name="file" accept="image/*" class="form-control-file" (change)="fileChange($event)"
+              required>
+              <!-- <input type="file" name="file" accept="image/*" class="form-control-file" required> -->
           </div>
           <br>
           <div class="text-center">

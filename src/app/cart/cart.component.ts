@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -18,14 +19,15 @@ export class CartComponent implements OnInit {
   constructor(
     private router: Router,
     private rest: RestApiService,
-    private data: DataService
+    private data: DataService,
+    private msgService: MessageServiceService
   ) { }
 
   ngOnInit() {
     this.cartItems.forEach(data => {
       this.quantities.push(1);
     });
-    console.log(this.cartItems)
+    console.log(this.cartItems);
     this.handler = StripeCheckout.configure({
       key: environment.stripeKey,
       image: 'assets/icons/logo.png',
@@ -47,13 +49,11 @@ export class CartComponent implements OnInit {
             stripeToken
           });
           data['success']
-            ? (this.data.clearCart(), this.data.success('Purchase successful!'))
-            : this.data.error(data['message']);
+            ? (this.data.clearCart(), this.msgService.openSnackbar('Purchase successful!', 'close'))
+            : this.msgService.openSnackbar(data['message'], 'retry');
         } catch (error) {
-          this.data.error(error['message']);
+          this.msgService.openSnackbar(error['message'], 'retry');
         }
-
-
       }
     });
   }
@@ -81,16 +81,16 @@ export class CartComponent implements OnInit {
 
   validate() {
     if (!this.quantities.every(data => data > 0)) {
-      this.data.warning('Quantity cannot be less than one :(');
+      this.msgService.openSnackbar('Quantity cannot be less than one :(', 'close');
     } else if (!localStorage.getItem('token')) {
       this.router.navigate(['/login'])
         .then(() => {
-          this.data.warning('Nigga, login before purchasing na, 419 :{')
+          this.msgService.openSnackbar('Nigga, login before purchasing na, 419 oshi :{', 'close');
         });
     } else if (!this.data.user['address']) {
       this.router.navigate(['/profile/address'])
         .then(() => {
-          this.data.warning('Login before purchasing please!')
+          this.msgService.openSnackbar('Login before purchasing please!', 'close');
         });
     } else {
       this.data.message = '';
@@ -101,7 +101,7 @@ export class CartComponent implements OnInit {
   checkout() {
     this.btnDisabled = true;
     try {
-      if(this.validate()) {
+      if (this.validate()) {
         this.handler.open({
           name: 'artarckrc',
           description: 'Checkout Payment',
@@ -110,10 +110,10 @@ export class CartComponent implements OnInit {
             this.btnDisabled = false;
           }
         });
-      } else { 
+      } else {
         this.btnDisabled = false;
       }
-    } catch(error) {
+    } catch (error) {
 
     }
   }

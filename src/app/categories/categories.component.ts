@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-categories',
@@ -14,14 +15,16 @@ export class CategoriesComponent implements OnInit {
   btnDisabled = false;
   newCategory: any;
   toggleReview: boolean;
-  checkAddAbility = false;
+  checkAddAbility: boolean;
   constructor(
     private data: DataService,
-    private rest: RestApiService
+    private rest: RestApiService,
+    private msgService: MessageServiceService
   ) { }
 
   async ngOnInit() {
-    if (localStorage.getItem('token') != '') {
+    console.log('local token', localStorage.getItem('token'));
+    if (localStorage.getItem('token')) {
       this.checkAddAbility = true;
     } else {
       this.checkAddAbility = false;
@@ -30,9 +33,9 @@ export class CategoriesComponent implements OnInit {
       const data = await this.rest.get(`${this.baseUrl}/api/categories`);
       data['success']
         ? (this.categories = data['categories'])
-        : this.data.error(data['message']);
+        : this.msgService.openSnackbar(data['message'], 'reload page');
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
     }
   }
 
@@ -41,10 +44,10 @@ export class CategoriesComponent implements OnInit {
     try {
       const data = await this.rest.post(`${this.baseUrl}/api/categories`, { category: this.newCategory });
       data['success']
-        ? this.data.success(data['message'])
-        : this.data.error(data['message']);
+        ? this.msgService.openSnackbar(data['message'], 'okay')
+        : this.msgService.openSnackbar(data['message'], 'retry');
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'errrhm');
     }
     this.btnDisabled = false;
   }
@@ -52,7 +55,4 @@ export class CategoriesComponent implements OnInit {
   showAddReview() {
     this.toggleReview = !this.toggleReview;
   }
-
-
-
 }

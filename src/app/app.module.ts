@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { RestApiService } from './rest-api.service';
 import { DataService } from './data.service';
+import { MessageServiceService } from './message-service.service';
 import { AuthGuardService } from './auth-guard.service';
 
 import { AppComponent } from './app.component';
@@ -59,7 +60,7 @@ import { CartComponent } from './cart/cart.component';
     NgbModule,
     RootNgbModule
   ],
-  providers: [RestApiService, DataService, AuthGuardService],
+  providers: [RestApiService, DataService, MessageServiceService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
