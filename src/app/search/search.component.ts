@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
 import { ActivatedRoute } from '@angular/router';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +18,8 @@ export class SearchComponent implements OnInit {
   constructor(
     private data: DataService,
     private rest: RestApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private msgService: MessageServiceService
   ) { }
 
   ngOnInit() {
@@ -49,9 +51,9 @@ export class SearchComponent implements OnInit {
       this.data = this.content;
       data['success']
         ? (this.content = data)
-        : this.data.error(data['message']);
+        : this.msgService.openSnackbar(data['message'], 'close');
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
     }
   }
 

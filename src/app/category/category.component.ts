@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-category',
@@ -15,18 +16,19 @@ export class CategoryComponent implements OnInit {
   pageSize = 12;
   offset: any;
   // pageEvent: PageEvent;
-  baseUrl = 'http://localhost:3000/api'
+  baseUrl = 'http://localhost:3000/api';
   constructor(
     private data: DataService,
     private rest: RestApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private msgService: MessageServiceService
   ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((res) => {
       this.categoryId = res['id'];
       this.getProducts();
-    })
+    });
   }
 
   get lower() {
@@ -39,16 +41,15 @@ export class CategoryComponent implements OnInit {
 
   async getProducts(event?: any) {
     if (event) {
-      this.category = null
+      this.category = null;
     }
     try {
       const data = await this.rest.get(`${this.baseUrl}/categories/${this.categoryId}?page=${this.page - 1}`);
       data['success']
         ? (this.category = data)
-        : this.data.error(data['message']);
-    }
-    catch (error) {
-      this.data.error(error['message']);
+        : this.msgService.openSnackbar(data['message'], 'retry');
+    } catch (error) {
+      this.msgService.openSnackbar(error['message'], 'errhm');
     }
   }
 

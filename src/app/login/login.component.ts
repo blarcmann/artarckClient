@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private data: DataService,
-    private rest: RestApiService
+    private rest: RestApiService,
+    private msgService: MessageServiceService
   ) { }
 
   ngOnInit() {
@@ -29,10 +31,10 @@ export class LoginComponent implements OnInit {
       if (this.password) {
         return true;
       } else {
-        this.data.error('Password is not entered');
+        this.msgService.openSnackbar('Password is not entered', 'close');
       }
     } else {
-      this.data.error('Email field is empty! why?');
+      this.msgService.openSnackbar('Email field is empty! why?', 'close');
     }
   }
 
@@ -48,14 +50,12 @@ export class LoginComponent implements OnInit {
           this.data.getProfile();
           this.router.navigate(['/']);
         } else {
-          this.data.error(data['message']);
+          this.msgService.openSnackbar(data['message'], 'retry');
         }
       }
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'errhm');
     }
     this.btnDisabled = false;
   }
-
-
 }

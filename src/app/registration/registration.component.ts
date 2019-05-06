@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -17,9 +18,12 @@ export class RegistrationComponent implements OnInit {
   isSeller = false;
   btnDisabled = false;
   baseUrl = 'http://localhost:3000/api';
-  constructor(private rest: RestApiService,
+  constructor(
+    private rest: RestApiService,
     private data: DataService,
-    private router: Router) { }
+    private router: Router,
+    private msgService: MessageServiceService
+    ) { }
 
   ngOnInit() {
   }
@@ -32,19 +36,19 @@ export class RegistrationComponent implements OnInit {
             if (this.password === this.password1) {
               return true;
             } else {
-              this.data.error('Password does not match...Check and try again');
+              this.msgService.openSnackbar('Password does not match...Check and try again', 'close');
             }
           } else {
-            this.data.error('Confirmation password is not entered');
+            this.msgService.openSnackbar('Confirmation password is not entered', 'close');
           }
         } else {
-          this.data.error('Password field is empty');
+          this.msgService.openSnackbar('Password field is empty', 'close');
         }
       } else {
-        this.data.error('Please provide your email');
+        this.msgService.openSnackbar('Please provide your email', 'close');
       }
     } else {
-      this.data.error('Name is not entered');
+      this.msgService.openSnackbar('Name is not entered', 'close');
     }
   }
 
@@ -69,14 +73,14 @@ export class RegistrationComponent implements OnInit {
           await this.data.getProfile();
           this.router.navigate(['/profile/address'])
             .then(() => {
-              this.data.success('Registration Success, Please enter your shipping address info');
-            }).catch(error => this.data.error(error));
+              this.msgService.openSnackbar('Registration Success, Please enter your shipping address info', 'errhm');
+            }).catch(error => this.msgService.openSnackbar(error, 'retry'));
         } else {
-          this.data.error(data['message']);
+          this.msgService.openSnackbar(data['message'], 'retry');
         }
       }
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
       console.log(error['message']);
       console.log('Registration failed :(');
     }

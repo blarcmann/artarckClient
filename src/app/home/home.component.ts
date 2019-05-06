@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
   fetching = false;
   constructor(
     private rest: RestApiService,
-    private data: DataService
+    private data: DataService,
+    private msgService: MessageServiceService
   ) { }
 
   async ngOnInit() {
@@ -23,11 +25,11 @@ export class HomeComponent implements OnInit {
       const data = await this.rest.get(`http://localhost:3000/api/products`);
       data['success']
         ? (this.products = data['products'])
-        : this.data.error('Could not fetch Products');
+        : this.msgService.openSnackbar('Could not fetch Products', 'retry');
         console.log(data);
     } catch (error) {
       this.fetching = false;
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
     }
     try {
       this.fetching = true;
@@ -35,10 +37,10 @@ export class HomeComponent implements OnInit {
       console.log(data);
       data['success']
         ? (this.categories = data['categories'])
-        : this.data.error(data['message']);
+        : this.msgService.openSnackbar(data['message'], 'errhm');
     } catch (error) {
       this.fetching = false;
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'retry');
     }
   }
 

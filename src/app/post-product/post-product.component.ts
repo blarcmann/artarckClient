@@ -106,5 +106,4 @@ export class PostProductComponent implements OnInit {
     this.btnDisabled = false;
   }
 
-
 }

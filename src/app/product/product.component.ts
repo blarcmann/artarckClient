@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestApiService } from '../rest-api.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-product',
@@ -21,7 +22,8 @@ export class ProductComponent implements OnInit {
     private data: DataService,
     private activatedRoute: ActivatedRoute,
     private rest: RestApiService,
-    private router: Router
+    private router: Router,
+    private msgService: MessageServiceService
 
   ) { }
 
@@ -29,13 +31,13 @@ export class ProductComponent implements OnInit {
     this.activatedRoute.params.subscribe((res) => {
       this.rest.get(`${this.baseUrl}/product/${res['id']}`)
         .then(data => {
-          console.log( data['product'])
+          console.log( data['product']);
           data['success']
             ? (this.product = data['product'])
             : this.router.navigate(['/']);
         })
-        .catch(error => this.data.error(error['message']));
-    })
+        .catch(error => this.msgService.openSnackbar(error['message'], 'retry'));
+    });
   }
 
   async postReview() {
@@ -48,18 +50,18 @@ export class ProductComponent implements OnInit {
         rating: this.myReview.rating
       });
       data['success']
-        ? this.data.success(data['message'])
-        : this.data.error(data['message'])
+        ? this.msgService.openSnackbar(data['message'], 'close')
+        : this.msgService.openSnackbar(data['message'], 'close');
     } catch (error) {
-      this.data.error(error['message'])
+      this.msgService.openSnackbar(error['message'], 'errhm');
     }
     this.btnDisabled = false;
   }
 
   addToCart() {
     this.data.addToCart(this.product)
-      ? this.data.success('Product Successfully added to cart!')
-      : this.data.error('Seems, there\'s recursion, please retry!')
+      ? this.msgService.openSnackbar('Product Successfully added to cart!', 'close')
+      : this.msgService.openSnackbar('Seems, there\'s recursion, please retry!', 'retry');
   }
 
 }

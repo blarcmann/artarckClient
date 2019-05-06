@@ -1,6 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-my-product',
@@ -12,7 +13,8 @@ export class MyProductComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   constructor(
     private rest: RestApiService,
-    private data: DataService
+    private data: DataService,
+    private msgService: MessageServiceService
   ) { }
 
   async ngOnInit() {
@@ -20,10 +22,10 @@ export class MyProductComponent implements OnInit {
       const data = await this.rest.get(`${this.baseUrl}/seller/products`);
       data['success']
         ? (this.products = data['products'])
-        : this.data.error(data['message']);
+        : this.msgService.openSnackbar(data['message'], 'close');
         console.log(this.products);
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'close');
     }
   }
 

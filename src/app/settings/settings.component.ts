@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../data.service';
 import { RestApiService } from '../rest-api.service';
+import { MessageServiceService } from '../message-service.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +15,8 @@ export class SettingsComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   constructor(
     private data: DataService,
-    private rest: RestApiService
+    private rest: RestApiService,
+    private msgService: MessageServiceService
   ) { }
 
   async ngOnInit() {
@@ -27,7 +29,7 @@ export class SettingsComponent implements OnInit {
         pwdConfirm: ''
       }, this.data.user);
     } catch (error) {
-      this.data.error(error);
+      this.msgService.openSnackbar(error, 'close');
     }
   }
 
@@ -40,23 +42,23 @@ export class SettingsComponent implements OnInit {
             if (settings['newPwd'] === settings['pwdConfirm']) {
               return true;
             } else {
-              this.data.error('Password does not match');
+              this.msgService.openSnackbar('Password does not match', 'close');
             }
           } else {
-            this.data.error('Please enter confirmation password');
+            this.msgService.openSnackbar('Please enter confirmation password', 'close');
           }
         } else {
           if (!settings['pwdConfirm']) {
             return true;
           } else {
-            this.data.error('Please enter your new password');
+            this.msgService.openSnackbar('Please enter your new password', 'close');
           }
         }
       } else {
-        this.data.error('Please enter your email');
+        this.msgService.openSnackbar('Please enter your email', 'close');
       }
     } else {
-      this.data.error('Please enter your name');
+      this.msgService.openSnackbar('Please enter your name', 'close');
     }
   }
 
@@ -71,11 +73,11 @@ export class SettingsComponent implements OnInit {
           isSeller: this.currentSettings['isSeller']
         });
         data['success']
-          ? (this.data.getProfile(), this.data.success(data['message']))
-          : this.data.error(data['message']);
+          ? (this.data.getProfile(), this.msgService.openSnackbar(data['message'], 'close'))
+          : this.msgService.openSnackbar(data['message'], 'retry');
       }
     } catch (error) {
-      this.data.error(error['message']);
+      this.msgService.openSnackbar(error['message'], 'errhm');
     }
     this.btnDisabled = false;
   }
