@@ -53,15 +53,17 @@
           </mat-form-field>
           <br>
           <mat-form-field>
-            <textarea matInput [(ngModel)]="product.description" name="description" rows="7" placeholder="Describe the product"
-              required></textarea>
+            <textarea matInput [(ngModel)]="product.description" name="description" rows="7"
+              placeholder="Describe the product" required></textarea>
           </mat-form-field>
           <br>
-          <div class="form-group">
-            <label>Upload Image</label>
-            <input type="file" name="file" accept="image/*" class="form-control-file" (change)="fileChange($event)"
-              required>
-              <!-- <input type="file" name="file" accept="image/*" class="form-control-file" required> -->
+          <div class="form-group upload">
+            <div class="label">Upload product image</div>
+            <label for="upload">
+              <img src="/assets/icons/upload.svg" />
+            </label>
+            <input type="file" id="upload" name="file" accept="image/*" (change)="fileChange($event)" required>
+            <!-- <input type="file" name="file" accept="image/*" class="form-control-file" required> -->
           </div>
           <br>
           <div class="text-center">

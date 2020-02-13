@@ -9,7 +9,9 @@
     </div>
   </div>
   <!-- <div class="col-lg-7 offset-lg-2"> -->
-  <h3 class="display-2 text-center mt-5" *ngIf="products && !products.length">I've not uploaded my works yet</h3>
+  <div class="text-center mt-5" *ngIf="products && !products.length">Sorry, no work was found,
+    you can do that <a mat-flat-button color="link" routerLink="/profile/postproduct">here</a>
+  </div>
   <!-- <div class="row" *ngIf="products && products.length">
       <div class="col">
         <div class="sect-title">My Products</div>
@@ -86,17 +88,17 @@
                 </div>
                 <ul class="menu-content">
                   <li>
-                    <a href="#" class="fa fa-bookmark-o lemon"></a>
+                    <a class="fa fa-bookmark-o lemon"></a>
                   </li>
-                  <li><a href="#" class="fa fa-heart-o yellow"><span>18</span></a></li>
-                  <li><a href="#" class="fa fa-comment-o lemon"><span>3</span></a></li>
+                  <li><a class="fa fa-heart-o yellow"><span>18</span></a></li>
+                  <li><a class="fa fa-comment-o lemon"><span>3</span></a></li>
                 </ul>
               </div>
               <div class="data">
                 <div class="content">
                   <span class="author">{{product.price | currency }}</span>
                   <h1 class="title" routerLink="/product/{{product._id}}">
-                    <a href="#">{{ product.title | truncate: [3] }}</a></h1>
+                    <a>{{ product.title | truncate: [3] }}</a></h1>
                   <p class="text">{{ product.description | truncate: [13] }}</p>
                   <!-- <img src="{{product.image}}" width="100%" height="100%" alt=""> -->
                   <a routerLink="/product/{{ product.id }}" class="button">More Info</a>

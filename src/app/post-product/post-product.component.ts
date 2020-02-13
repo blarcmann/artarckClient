@@ -12,7 +12,6 @@ import { FooterRowOutlet } from '@angular/cdk/table';
   styleUrls: ['./post-product.component.scss']
 })
 export class PostProductComponent implements OnInit {
-
   product = {
     title: '',
     price: 0,
@@ -20,6 +19,7 @@ export class PostProductComponent implements OnInit {
     description: '',
     product_picture: null
   };
+
   btnDisabled = false;
   categories: any;
   image = 'https://hd.unsplash.com/photo-1463415268136-e52a5af54519';
@@ -93,7 +93,8 @@ export class PostProductComponent implements OnInit {
             }
           }
         }
-        const data = await this.rest.post(`${this.baseUrl}/seller/products`, form);
+        console.log(this.product);
+        const data = await this.rest.post(`${this.baseUrl}/seller/create_product`, form);
         data['success']
           ? this.router.navigate(['/profile/myproducts'])
             .then(() => this.msgService.openSnackbar(data['message'], 'close'))

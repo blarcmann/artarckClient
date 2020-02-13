@@ -13,23 +13,24 @@
             </mat-card-header>
             <form>
               <div class="each-info">
-                <mat-form-field color="accent">
+                <mat-form-field color="primary">
                   <input matInput placeholder="Name" name="name" [(ngModel)]="name">
                 </mat-form-field>
               </div>
               <div class="each-info">
-                <mat-form-field color="accent">
+                <mat-form-field color="primary">
                   <input matInput placeholder="Email" name="email" [(ngModel)]="email">
                 </mat-form-field>
               </div>
               <div class="each-info">
-                <mat-form-field color="accent">
-                  <input matInput placeholder="Password" name="password" [(ngModel)]="password">
+                <mat-form-field color="primary">
+                  <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password">
                 </mat-form-field>
               </div>
               <div class="each-info">
-                <mat-form-field color="accent">
-                  <input matInput placeholder="Confirm Password" name="password1" [(ngModel)]="password1">
+                <mat-form-field color="primary">
+                  <input matInput type="password" placeholder="Confirm Password" name="password1"
+                    [(ngModel)]="password1">
                 </mat-form-field>
               </div>
               <div class="each-info">
@@ -37,7 +38,8 @@
                   an exhibitor</mat-checkbox>
               </div>
               <div class="each-info text-center">
-                <button type="button" mat-raised-button color="primary" (click)="register()" [disabled]="btnDisabled">Register</button>
+                <button type="button" mat-raised-button color="primary" (click)="register()"
+                  [disabled]="btnDisabled">Register</button>
               </div>
             </form>
           </mat-card>

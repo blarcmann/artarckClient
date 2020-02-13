@@ -17,3 +17,22 @@
       font-size: 0.905rem;
     }
 }
+
+.upload {
+    margin: 1.25rem auto;
+    label {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+    input {
+        display: none;
+    }
+    .label {
+        text-align: center;
+        margin-bottom: 0.75rem;
+    }
+}

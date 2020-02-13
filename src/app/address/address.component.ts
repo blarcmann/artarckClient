@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { MessageServiceService } from '../message-service.service';
 import { RestApiService } from '../rest-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address',
@@ -12,10 +13,11 @@ import { RestApiService } from '../rest-api.service';
 export class AddressComponent implements OnInit {
   currentAddress = '';
   btnDisabled = false;
-  baseUrl  = 'http://localhost:3000/api';
+  baseUrl = 'http://localhost:3000/api';
 
   constructor(
     private data: DataService,
+    private router: Router,
     private rest: RestApiService,
     private msgService: MessageServiceService
   ) { }
@@ -38,9 +40,12 @@ export class AddressComponent implements OnInit {
     this.btnDisabled = true;
     try {
       const res = await this.rest.post(`${this.baseUrl}/accounts/address`, this.currentAddress);
-      res['success']
-        ? (this.msgService.openSnackbar(res['message'], 'close'), await this.data.getProfile())
-        : this.msgService.openSnackbar(res['message'], 'retry');
+      if (res['success']) {
+        (this.msgService.openSnackbar(res['message'], 'close'), await this.data.getProfile());
+        this.router.navigate(['/profile']);
+      } else {
+        this.msgService.openSnackbar(res['message'], 'retry');
+      }
     } catch (error) {
       this.msgService.openSnackbar(error['message'], 'retry');
     }
