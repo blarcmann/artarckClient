@@ -41,7 +41,6 @@ export class CartComponent implements OnInit {
             quantity: this.quantities[index]
           });
         });
-
         try {
           const data = await this.rest.post(`${this.baseUrl}/payment`, {
             totalPrice: this.cartTotal,
@@ -87,21 +86,25 @@ export class CartComponent implements OnInit {
         .then(() => {
           this.msgService.openSnackbar('Nigga, login before purchasing na, 419 oshi :{', 'close');
         });
-    } else if (!this.data.user['address']) {
-      this.router.navigate(['/profile/address'])
-        .then(() => {
-          this.msgService.openSnackbar('Login before purchasing please!', 'close');
-        });
     } else {
       this.data.message = '';
       return true;
     }
+    // else if (!this.data.user['address']) {
+    //   this.router.navigate(['/profile/address'])
+    //     .then(() => {
+    //       this.msgService.openSnackbar('Address seems invalid, please retry', 'close');
+    //     });
+    // }
   }
 
   checkout() {
     this.btnDisabled = true;
     try {
       if (this.validate()) {
+        this.data.clearCart();
+        this.msgService.openSnackbar('Order is being processed', 'close');
+        this.router.navigate(['/']);
         this.handler.open({
           name: 'artarckrc',
           description: 'Checkout Payment',

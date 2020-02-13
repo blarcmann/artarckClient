@@ -12,6 +12,7 @@ import { MessageServiceService } from '../message-service.service';
 export class ProductComponent implements OnInit {
   product: any;
   baseUrl = 'http://localhost:3000/api';
+  naira = '₦';
   myReview = {
     title: '',
     description: '',

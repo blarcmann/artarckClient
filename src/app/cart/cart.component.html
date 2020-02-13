@@ -1,11 +1,8 @@
 <section class="cart">
   <div class="container">
-
     <app-message></app-message>
-
     <div class="row" *ngIf="!cartItems.length">
-      <h4 class="text-center no-cart-items display-4 mt-5">You wantu checkout ofurufu ni? ;[
-      </h4>
+      <h4 class="text-center no-cart-items display-6 mt-5">Cart is empty...ofurufu :(</h4>
     </div>
 
     <div class="row" *ngIf="cartItems.length">
@@ -34,10 +31,10 @@
                   <div class="item-id">
                     <span>ID: {{item._id.substring(0, 7)}}</span>
                   </div>
-                  <div class="pick-tags a1" *ngIf="item.price <= 100">Cheapest outchea</div>
+                  <!-- <div class="pick-tags a1" *ngIf="item.price <= 100">Cheapest outchea</div>
                   <div class="pick-tags a2" *ngIf="item.price <= 200">Marichupako</div>
                   <div class="pick-tags a3" *ngIf="item.price <= 300">Kapaichumari</div>
-                  <div class="pick-tags a4" *ngIf="item.price > 300 ">Great Pick</div>
+                  <div class="pick-tags a4" *ngIf="item.price > 300 ">Great Pick</div> -->
                 </div>
               </div>
             </div>
@@ -71,7 +68,7 @@
             <h3 class="value">{{ cartTotal | currency }}</h3>
           </div>
           <div class="checkout-btn">
-            <button class="checkout">CHECKOUT</button>
+            <button class="checkout" (click)="checkout()">CHECKOUT</button>
           </div>
         </div>
       </div>

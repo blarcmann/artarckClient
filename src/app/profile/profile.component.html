@@ -11,26 +11,23 @@
     </div>
 
     <div class="row" *ngIf="data.user">
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="profile-welcome" id="name">Hey, <span>{{ data.user.name | uppercase }}</span> </div>
         <img [src]="data.user.picture" alt="userImage" class="rounded-circle profile-img image">
-      </div>
+      </div> -->
 
-      <div class="col-md-8 ml-3">
+      <div class="col-md-7 mx-auto">
+        <div class="profile-welcome" id="name">Hey, <span>{{ data.user.name }}</span> </div>
+        <img [src]="data.user.picture" alt="userImage" class="rounded-circle profile-img image">
         <div class="seller-container">
-          <p class="quick-action" id="name"> Quick actions </p>
-          <a mat-raised-button color="link" routerLink="/profile/orders">My Orders</a>
-          <br>
-          <br>
-          <a mat-raised-button color="link" routerLink="/profile/settings">Change Account Settings</a>
-          <br>
-          <br>
-          <a mat-raised-button color="link" routerLink="/profile/address">Change Shipping Address</a>
-          <br>
-          <br>
+          <div class="action-section">
+            <p class="quick-action" id="name"> Quick actions </p>
+            <!-- <button mat-raised-button color="link" routerLink="/profile/orders">My Orders</button> -->
+            <button mat-raised-button color="link" routerLink="/profile/settings">Change Account Settings</button>
+            <button mat-raised-button color="link" routerLink="/profile/address">Change Shipping Address</button>
+          </div>
           <div *ngIf="data.user.isSeller">
             <p class="quick-action">Seller Options</p>
-            <hr>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <a routerLink="/profile/postproduct" class="btn btn-outline-success btn-block">Post product for sale</a>
@@ -39,7 +36,6 @@
                 <a routerLink="/profile/myproducts" class="btn btn-outline-success btn-block">My Products</a>
               </div>
             </div>
-            <hr>
           </div>
         </div>
       </div>

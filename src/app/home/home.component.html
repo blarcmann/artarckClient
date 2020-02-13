@@ -17,7 +17,7 @@
         <div class="horizontal-scroll-wrapper squares">
           <div class="each-item" *ngFor="let product of products">
             <div class="top-banner" routerLink="/product/{{ product._id }}">
-              <img [src]="product.image" [alt]="product.name" />
+              <img [src]="product.image" [alt]="product.title" />
             </div>
             <div class="details" routerLink="/product/{{ product._id }}">
               <div class="title-price">

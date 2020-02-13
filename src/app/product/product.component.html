@@ -20,7 +20,7 @@
           <div class="col-md-5">
             <div class="details-cover">
               <div class="product-title">{{ product.title }}</div>
-              <div class="product-price">{{ product.price | currency }}</div>
+              <div class="product-price">{{ product.price | currency: naira }}</div>
               <div class="product-rating">
                 <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
               </div>
@@ -30,7 +30,7 @@
                 </a>
               </p>
               <p class="product-description">{{ product.description }}</p>
-              <p class="product-owner"> <span>by: <span routerLink="">{{ product.owner.name }}</span></span></p>
+              <p class="product-owner"> <span>by: {{ product.owner.name }}</span></p>
             </div>
             <div class="add-to-cart text-center">
               <button class="standard-btn dark-bg" (click)="addToCart()">Add to Cart</button>
@@ -90,7 +90,7 @@
                     <div class="review">
                       <!-- <p class="title">{{ review.title }}</p> -->
                       <p class="description"><q>{{ review.description }}</q></p>
-                      <p class="reviewer">{{ review.owner.name }}(<ngb-rating [(rate)]="product.averageRating"
+                      <p class="reviewer">{{ review.owner.name }} &nbsp;(<ngb-rating [(rate)]="product.averageRating"
                           [starTemplate]="t" [readonly]="true" max="5">
                         </ngb-rating>)</p>
                     </div>

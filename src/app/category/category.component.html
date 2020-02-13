@@ -22,16 +22,12 @@
               <img [src]="product.image" alt="">
             </div>
             <div class="product-details">
-              <div class="price-rate">
-                <div class="rating">
-                  <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5">
-                  </ngb-rating>
-                </div>
-                <div class="price">{{ product.price | currency }}</div>
+              <div class="cov">
+                <div class="product-title">{{product.title}}</div>
+                <div class="price">{{ product.price | currency: naira }}</div>
               </div>
-              <div class="product-title">{{product.title}}</div>
               <div class="product-owner">
-                <img src="{{ product.owner.picture }}" class="owner-pic" alt="">
+                <img [src]="product.owner.picture || '/assets/icons/404.svg'" class="owner-pic" alt="">
                 <div class="owner-name"><i>{{ product.owner.name }}</i></div>
               </div>
             </div>
@@ -40,7 +36,7 @@
       </div>
       <div class="row paginatn">
         <ngb-pagination class="paginateDark" [collectionSize]="category.totalProducts" [(page)]="page"
-        (pageChange)="getProducts($event)"></ngb-pagination>
+          (pageChange)="getProducts($event)"></ngb-pagination>
       </div>
     </div>
   </div>

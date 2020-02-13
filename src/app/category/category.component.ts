@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit {
   page = 1;
   pageSize = 12;
   offset: any;
+  naira = '₦';
   // pageEvent: PageEvent;
   baseUrl = 'http://localhost:3000/api';
   constructor(
