@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
     title: '',
     description: '',
     rating: 0
-  }
+  };
   btnDisabled = false;
   constructor(
     private data: DataService,
@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
     this.activatedRoute.params.subscribe((res) => {
       this.rest.get(`${this.baseUrl}/product/${res['id']}`)
         .then(data => {
-          console.log( data['product']);
+          console.log(data['product']);
           data['success']
             ? (this.product = data['product'])
             : this.router.navigate(['/']);
@@ -49,9 +49,12 @@ export class ProductComponent implements OnInit {
         description: this.myReview.description,
         rating: this.myReview.rating
       });
-      data['success']
-        ? this.msgService.openSnackbar(data['message'], 'close')
-        : this.msgService.openSnackbar(data['message'], 'close');
+      if (data['success']) {
+        this.msgService.openSnackbar(data['message'], 'close');
+        window.location.reload();
+      } else {
+        this.msgService.openSnackbar(data['message'], 'close');
+      }
     } catch (error) {
       this.msgService.openSnackbar(error['message'], 'errhm');
     }

@@ -22,7 +22,7 @@
             <div class="details" routerLink="/product/{{ product._id }}">
               <div class="title-price">
                 <div class="title">{{ product.title }}</div>
-                <div class="price">{{ product.price | currency }}</div>
+                <div class="price">{{ product.price | currency: naira }}</div>
               </div>
               <div class="category">
                 {{ product.category.name }}
@@ -31,10 +31,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="loader-ish"
-        *ngIf="(fetching && !products) || !products.length"
-      >
+      <div class="loader-ish" *ngIf="(fetching && !products) || !products.length">
         <div class="lds-ripple">
           <div></div>
           <div></div>
@@ -54,8 +51,8 @@
         <img src="/assets/imgs/decision.svg" alt="Winks" />
       </div>
 
-      <p class="discount text-center">Making your first order rightaway??</p>
-      <p class="discount-tag text-center">Recieve 15% off your next</p>
+      <p class="discount text-center">Making your first order rightaway?</p>
+      <p class="discount-tag text-center">Get 15% off your next</p>
     </div>
     <div class="best-sellers">
       <div class="top-heading">
@@ -65,12 +62,12 @@
         <div class="horizontal-scroll-wrapper squares">
           <div class="each-item" *ngFor="let product of products">
             <div class="top-banner" routerLink="/product/{{ product._id }}">
-              <img [src]="product.image" [alt]="product.name" />
+              <img [src]="product.image" [alt]="product.title" />
             </div>
             <div class="details" routerLink="/product/{{ product._id }}">
               <div class="title-price">
                 <div class="title">{{ product.title }}</div>
-                <div class="price">{{ product.price | currency }}</div>
+                <div class="price">{{ product.price | currency : naira }}</div>
               </div>
               <div class="category">
                 {{ product.category.name }}
@@ -79,10 +76,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="loader-ish"
-        *ngIf="(fetching && !products) || !products.length"
-      >
+      <div class="loader-ish" *ngIf="(fetching && !products) || !products.length">
         <div class="lds-ripple">
           <div></div>
           <div></div>
@@ -95,20 +89,13 @@
 
     <h3 class="title mx-auto mt-2 mb-4">Top Categories</h3>
     <div class="categories-list" *ngIf="categories && categories.length">
-      <div
-        class="each-category"
-        [routerLink]="['/categories', category._id]"
-        *ngFor="let category of categories"
-      >
-        <span><img src="./assets/icons/hyper.svg" alt=""/></span>
+      <div class="each-category" [routerLink]="['/categories', category._id]" *ngFor="let category of categories">
+        <span><img src="./assets/icons/hyper.svg" alt="" /></span>
         {{ category.name }}
       </div>
     </div>
     <div class="no-caregories" *ngIf="!categories || !categories.length">
-      <div
-        class="loader-ish"
-        *ngIf="(fetching && !products) || !products.length"
-      >
+      <div class="loader-ish" *ngIf="(fetching && !products) || !products.length">
         <div class="lds-ripple">
           <div></div>
           <div></div>
@@ -125,9 +112,6 @@
         <img src="./assets/imgs/trending2.jpg" alt="" />
         <img src="./assets/imgs/trending03.jpg" alt="" />
         <img src="./assets/imgs/trending3.jpg" alt="" />
-        <!-- <img src="./assets/imgs/trending1.jpg" alt=""> -->
-        <!-- <img src="./assets/imgs/trending5.jpg" alt=""> -->
-        <!-- <img src="./assets/imgs/trending7.jpg" alt=""> -->
         <img src="./assets/imgs/trending8.jpg" alt="" />
         <img src="./assets/imgs/trending02.jpg" alt="" />
         <img src="./assets/imgs/trending9.jpg" alt="" />

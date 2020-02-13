@@ -1,6 +1,6 @@
 .single-product {
     .star {
-        font-size: 4em !important;
+        font-size: 2rem !important;
         @media(max-width: 767px) {
             font-size: 3em !important;
         }
@@ -42,6 +42,7 @@
                     }
                 }
                 .product-category {
+                    margin: 1rem 0;
                     a {
                         text-decoration: none;
                     }
@@ -58,9 +59,9 @@
                     }
                 }
                 .product-description {
-                    margin: 30px auto;
-                    padding: 10px;
-                    font-size: 14px;
+                    margin: 1rem auto;
+                    padding: 0.75rem;
+                    font-size: 0.875rem;
                     color: #5f6275;
                     @media(max-width: 600px) {
                         font-size: 13px;
@@ -68,7 +69,8 @@
                 }
                 .product-owner { 
                     color: #333;
-                    font-size: 12px;
+                    font-size: 0.75rem;
+                    padding-left: 0.75rem;
                 }
                 .add-to-cart {
                     @media(max-width: 767px) {
@@ -124,9 +126,45 @@
                     font-size: 17px;
                 }
             }
+            .each-review {
+                display: flex;
+                justify-content: flex-start;
+                padding: 0.75rem;
+                box-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.125);
+                margin: 1rem 0;
+                p {
+                    margin-bottom: 0;
+                }
+                .profile-img {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 0.75rem;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
+                }
+                .review {
+                    .star {
+                        font-size: 1rem !important;
+                    }
+                    .description {
+                        font-size: 0.875rem;
+                    }
+                    .reviewer {
+                        margin-top: 0.35rem;
+                        color: #333;
+                        font-size: 0.75rem;
+                        text-decoration: underline;
+                    }
+                }
+            }
             .no-reviews {
                 .no-review {
-                    font-size: 40px;
+                    font-size: 2.25rem;
+                    font-weight: 500;
+                    color: #333;
                     text-align: center;
                 }
             }

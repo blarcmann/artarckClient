@@ -19,9 +19,9 @@
           </div>
           <div class="col-md-5">
             <div class="details-cover">
-              <div class="product-title text-center">{{ product.title }}</div>
-              <div class="product-price text-center">{{ product.price | currency }}</div>
-              <div class="product-rating text-center">
+              <div class="product-title">{{ product.title }}</div>
+              <div class="product-price">{{ product.price | currency }}</div>
+              <div class="product-rating">
                 <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
               </div>
               <p class="product-category">
@@ -30,7 +30,7 @@
                 </a>
               </p>
               <p class="product-description">{{ product.description }}</p>
-              <p class="product-owner"> <span>by: {{ product.owner.name }}</span></p>
+              <p class="product-owner"> <span>by: <span routerLink="">{{ product.owner.name }}</span></span></p>
             </div>
             <div class="add-to-cart text-center">
               <button class="standard-btn dark-bg" (click)="addToCart()">Add to Cart</button>
@@ -46,7 +46,7 @@
               <mat-card>
                 <mat-card-header>
                   <mat-card-title>
-                    <h5 class="card-tt">Add a review</h5>
+                    <div class="reviews-title">Add a review</div>
                   </mat-card-title>
                 </mat-card-header>
                 <mat-divider></mat-divider>
@@ -83,18 +83,18 @@
               </div>
               <div class="check-for-reviews" *ngIf="product.reviews.length">
                 <div *ngFor="let review of product.reviews" class="review">
-                  <div class="p-3">
-                    <img [src]="review.owner.picture" alt="reviewer Image" width="75px" class="rounded-circle">
-                    <p class="lead d-inline ml-3">{{ review.owner.name }} says:</p>
-                    <br>
-                    <br>
-                    <ngb-rating [(rate)]="product.averageRating" [starTemplate]="t" [readonly]="true" max="5">
-                    </ngb-rating>
-                    <br>
-                    <p class="ml-2 d-inline">{{ review.title }}</p>
-                    <p class="mt-3"><em>"{{ review.description }}"</em></p>
+                  <div class="each-review">
+                    <div class="profile-img">
+                      <img [src]="review.owner.picture" alt="reviewer Image" class="rounded-circle">
+                    </div>
+                    <div class="review">
+                      <!-- <p class="title">{{ review.title }}</p> -->
+                      <p class="description"><q>{{ review.description }}</q></p>
+                      <p class="reviewer">{{ review.owner.name }}(<ngb-rating [(rate)]="product.averageRating"
+                          [starTemplate]="t" [readonly]="true" max="5">
+                        </ngb-rating>)</p>
+                    </div>
                   </div>
-                  <hr>
                 </div>
               </div>
             </div>
