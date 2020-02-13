@@ -1,7 +1,6 @@
 <section class="settings">
   <div *ngIf="!currentSettings" class="text-center loading-bar">
     <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
-    <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
   </div>
   <div class="container pb-5 pt-5">
     <div class="title">My Account Information</div>
@@ -25,25 +24,29 @@
             </mat-form-field>
             <br>
             <mat-form-field>
-              <input type="email" name="email" matInput placeholder="New Email address" [(ngModel)]="currentSettings.email">
+              <input type="email" name="email" matInput placeholder="New Email address"
+                [(ngModel)]="currentSettings.email">
             </mat-form-field>
             <br>
             <mat-form-field>
-              <input type="password" name="newPwd" matInput placeholder="New Password" [(ngModel)]="currentSettings.newPwd"
-                required>
+              <input type="password" name="newPwd" matInput placeholder="New Password"
+                [(ngModel)]="currentSettings.newPwd" required>
             </mat-form-field>
             <br>
             <mat-form-field>
-              <input type="password" name="confirmPwd" matInput placeholder="Please, confirm your password" [(ngModel)]="currentSettings.confirmPwd">
+              <input type="password" name="confirmPwd" matInput placeholder="Please, confirm your password"
+                [(ngModel)]="currentSettings.confirmPwd">
             </mat-form-field>
             <p>
               <br>
-              <mat-checkbox [(ngModel)]="currentSettings.isSeller" name="isSeller" color="warn">Become a Seller</mat-checkbox>
+              <mat-checkbox [(ngModel)]="currentSettings.isSeller" name="isSeller" color="warn">Become a Seller
+              </mat-checkbox>
               <br>
             </p>
 
             <br>
-            <button type="button" mat-raised-button color="primary" (click)="update()" [disabled]="btnDisabled">Update</button>
+            <button type="button" mat-raised-button color="primary" (click)="update()"
+              [disabled]="btnDisabled">Update</button>
           </form>
         </mat-card-content>
       </mat-card>

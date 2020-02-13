@@ -1,7 +1,6 @@
 <section class="category">
   <div *ngIf="!category">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
   <div *ngIf="!category" class="no-user-spinner">
     <div class="text-center">
@@ -28,7 +27,7 @@
               </div>
               <div class="product-owner">
                 <img [src]="product.owner.picture || '/assets/icons/404.svg'" class="owner-pic" alt="">
-                <div class="owner-name"><i>{{ product.owner.name }}</i></div>
+                <div class="owner-name">{{ product.owner.name }}</div>
               </div>
             </div>
           </a>

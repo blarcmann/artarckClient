@@ -1,7 +1,6 @@
 <section class="categories">
   <div *ngIf="!categories">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
   <div *ngIf="!categories" class="no-user-spinner">
     <div class="text-center">
@@ -27,24 +26,14 @@
                 <br />
                 <mat-card-content>
                   <mat-form-field>
-                    <input
-                      type="text"
-                      name="newCategory"
-                      matInput
-                      placeholder="Add new Category"
-                      [(ngModel)]="newCategory"
-                    />
+                    <input type="text" name="newCategory" matInput placeholder="Add new Category"
+                      [(ngModel)]="newCategory" />
                   </mat-form-field>
 
                   <br />
                   <div class="text-center">
-                    <button
-                      type="button"
-                      mat-raised-button
-                      color="warn"
-                      (click)="addCategory()"
-                      [disabled]="btnDisabled"
-                    >
+                    <button type="button" mat-raised-button color="warn" (click)="addCategory()"
+                      [disabled]="btnDisabled">
                       Add Category
                     </button>
                   </div>
@@ -67,24 +56,14 @@
                     <br />
                     <mat-card-content>
                       <mat-form-field>
-                        <input
-                          type="text"
-                          name="newCategory"
-                          matInput
-                          placeholder="Add new Category"
-                          [(ngModel)]="newCategory"
-                        />
+                        <input type="text" name="newCategory" matInput placeholder="Add new Category"
+                          [(ngModel)]="newCategory" />
                       </mat-form-field>
 
                       <br />
                       <div class="text-center">
-                        <button
-                          type="button"
-                          mat-raised-button
-                          color="warn"
-                          (click)="addCategory()"
-                          [disabled]="btnDisabled"
-                        >
+                        <button type="button" mat-raised-button color="warn" (click)="addCategory()"
+                          [disabled]="btnDisabled">
                           Add Category
                         </button>
                       </div>

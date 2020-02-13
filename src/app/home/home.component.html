@@ -87,18 +87,22 @@
       </div>
     </div>
 
-    <h3 class="title mx-auto mt-2 mb-4">Top Categories</h3>
-    <div class="categories-list" *ngIf="categories && categories.length">
-      <div class="each-category" [routerLink]="['/categories', category._id]" *ngFor="let category of categories">
-        <span><img src="./assets/icons/hyper.svg" alt="" /></span>
-        {{ category.name }}
+    <div class="best-sellers">
+      <div class="top-heading">
+        <h3 class="title">Top categories</h3>
       </div>
-    </div>
-    <div class="no-caregories" *ngIf="!categories || !categories.length">
-      <div class="loader-ish" *ngIf="(fetching && !products) || !products.length">
-        <div class="lds-ripple">
-          <div></div>
-          <div></div>
+      <div class="categories-list" *ngIf="categories && categories.length">
+        <div class="each-category" [routerLink]="['/categories', category._id]" *ngFor="let category of categories">
+          <span><img src="./assets/icons/hyper.svg" alt="" /></span>
+          {{ category.name }}
+        </div>
+      </div>
+      <div class="no-caregories" *ngIf="!categories || !categories.length">
+        <div class="loader-ish" *ngIf="(fetching && !products) || !products.length">
+          <div class="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>
