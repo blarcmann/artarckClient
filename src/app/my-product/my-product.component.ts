@@ -11,6 +11,7 @@ import { MessageServiceService } from '../message-service.service';
 export class MyProductComponent implements OnInit {
   products: any;
   baseUrl = 'http://localhost:3000/api';
+  naira = '₦';
   constructor(
     private rest: RestApiService,
     private data: DataService,
@@ -23,7 +24,7 @@ export class MyProductComponent implements OnInit {
       data['success']
         ? (this.products = data['products'])
         : this.msgService.openSnackbar(data['message'], 'close');
-        console.log(this.products);
+      console.log(this.products);
     } catch (error) {
       this.msgService.openSnackbar(error['message'], 'close');
     }

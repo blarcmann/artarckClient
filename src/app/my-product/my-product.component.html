@@ -84,7 +84,7 @@
             <div class="wrapper" [style.background-image]="product.image">
               <div class="header">
                 <div class="date">
-                  <span class="day">by: {{product.owner.name | uppercase}}</span>
+                  <span class="day">by: {{product.owner.name}}</span>
                 </div>
                 <ul class="menu-content">
                   <li>
@@ -96,7 +96,7 @@
               </div>
               <div class="data">
                 <div class="content">
-                  <span class="author">{{product.price | currency }}</span>
+                  <span class="author">{{product.price | currency: naira }}</span>
                   <h1 class="title" routerLink="/product/{{product._id}}">
                     <a>{{ product.title | truncate: [3] }}</a></h1>
                   <p class="text">{{ product.description | truncate: [13] }}</p>

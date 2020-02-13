@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   query: string;
   page = 1;
   content: any;
+  naira = '₦';
   baseUrl = 'http://localhost:3000/api';
   noResult = false;
   constructor(

@@ -11,7 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
-  currentAddress = '';
+  currentAddress = {
+    address1: '',
+    address2: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    country: ''
+  };
   btnDisabled = false;
   baseUrl = 'http://localhost:3000/api';
 
@@ -27,7 +34,6 @@ export class AddressComponent implements OnInit {
       const data = await this.rest.get(`${this.baseUrl}/accounts/address`);
 
       if (JSON.stringify(data['address']) === '{}' && this.data.message === '') {
-        this.msgService.openSnackbar('You have not entered your shipping address, please do b4 I vex!', 'close');
       } else {
         this.currentAddress = data['address'];
       }

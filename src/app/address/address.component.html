@@ -21,11 +21,13 @@
           <mat-card-content>
             <form>
               <mat-form-field>
-                <input type="text" matInput placeholder="Address 1" [(ngModel)]="currentAddress.addr1" name="address1">
+                <input type="text" matInput placeholder="Address 1" [(ngModel)]="currentAddress.address1"
+                  name="address1">
               </mat-form-field>
               <br>
               <mat-form-field>
-                <input type="text" matInput placeholder="Address 2" [(ngModel)]="currentAddress.addr2" name="address2">
+                <input type="text" matInput placeholder="Address 2" [(ngModel)]="currentAddress.address2"
+                  name="address2">
               </mat-form-field>
               <br>
               <div class="row">
@@ -43,7 +45,8 @@
                 </div>
                 <div class="col-md-4">
                   <mat-form-field>
-                    <input type="text" matInput placeholder="Postal Code" [(ngModel)]="currentAddress.postalCode" name="postalCode">
+                    <input type="text" matInput placeholder="Postal Code" [(ngModel)]="currentAddress.postalCode"
+                      name="postalCode">
                   </mat-form-field>
                   <br>
                 </div>
@@ -53,7 +56,8 @@
               </mat-form-field>
               <br>
               <br>
-              <button type="button" mat-raised-button color="primary" (click)="updateAddress()" [disabled]="btnDisabled">Update
+              <button type="button" mat-raised-button color="primary" (click)="updateAddress()"
+                [disabled]="btnDisabled">Update
                 Address</button>
             </form>
           </mat-card-content>

@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="bumbum">
-                <div class="product-price"><span>{{ product.price | currency }}</span></div>
+                <div class="product-price"><span>{{ product.price | currency: naira }}</span></div>
                 <div class="product-title">{{ product.title }}</div>
                 <div class="product-dealer">by: <b> <span>{{ product.owner.name }}</span></b> </div>
               </div>
