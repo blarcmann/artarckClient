@@ -9,7 +9,7 @@ export class DataService {
   message = '';
   messageType = 'danger';
   user: any;
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'https://artarckrc.herokuapp.com/api';
   cartItems = 0;
 
   constructor(

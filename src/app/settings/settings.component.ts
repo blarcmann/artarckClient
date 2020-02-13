@@ -12,7 +12,6 @@ import { MessageServiceService } from '../message-service.service';
 export class SettingsComponent implements OnInit {
   btnDisabled = false;
   currentSettings: any;
-  baseUrl = 'http://localhost:3000/api';
   constructor(
     private data: DataService,
     private rest: RestApiService,
@@ -66,7 +65,7 @@ export class SettingsComponent implements OnInit {
     this.btnDisabled = true;
     try {
       if (this.validate(this.currentSettings)) {
-        const data = this.rest.post(`${this.baseUrl}/accounts/profile`, {
+        const data = this.rest.post(`${this.data.baseUrl}/accounts/profile`, {
           name: this.currentSettings['name'],
           email: this.currentSettings['email'],
           newPwd: this.currentSettings['newPwd'],

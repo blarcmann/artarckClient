@@ -11,7 +11,6 @@ import { MessageServiceService } from '../message-service.service';
 })
 export class ProductComponent implements OnInit {
   product: any;
-  baseUrl = 'http://localhost:3000/api';
   naira = '₦';
   myReview = {
     title: '',
@@ -30,7 +29,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((res) => {
-      this.rest.get(`${this.baseUrl}/product/${res['id']}`)
+      this.rest.get(`${this.data.baseUrl}/product/${res['id']}`)
         .then(data => {
           console.log(data['product']);
           data['success']
@@ -44,7 +43,7 @@ export class ProductComponent implements OnInit {
   async postReview() {
     this.btnDisabled = true;
     try {
-      const data = this.rest.post(`${this.baseUrl}/review`, {
+      const data = this.rest.post(`${this.data.baseUrl}/review`, {
         productId: this.product._id,
         title: this.myReview.title,
         description: this.myReview.description,

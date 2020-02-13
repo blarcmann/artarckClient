@@ -23,7 +23,6 @@ export class PostProductComponent implements OnInit {
   btnDisabled = false;
   categories: any;
   image = 'https://hd.unsplash.com/photo-1463415268136-e52a5af54519';
-  baseUrl = 'http://localhost:3000/api';
 
   constructor(
     private data: DataService,
@@ -34,7 +33,7 @@ export class PostProductComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const data = await this.rest.get(`${this.baseUrl}/categories`);
+      const data = await this.rest.get(`${this.data.baseUrl}/categories`);
       data['success']
         ? (this.categories = data['categories'])
         : (this.msgService.openSnackbar(data['message'], 'retry'));
@@ -94,7 +93,7 @@ export class PostProductComponent implements OnInit {
           }
         }
         console.log(this.product);
-        const data = await this.rest.post(`${this.baseUrl}/seller/create_product`, form);
+        const data = await this.rest.post(`${this.data.baseUrl}/seller/create_product`, form);
         data['success']
           ? this.router.navigate(['/profile/myproducts'])
             .then(() => this.msgService.openSnackbar(data['message'], 'close'))

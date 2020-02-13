@@ -20,7 +20,6 @@ export class AddressComponent implements OnInit {
     country: ''
   };
   btnDisabled = false;
-  baseUrl = 'http://localhost:3000/api';
 
   constructor(
     private data: DataService,
@@ -31,7 +30,7 @@ export class AddressComponent implements OnInit {
 
   async  ngOnInit() {
     try {
-      const data = await this.rest.get(`${this.baseUrl}/accounts/address`);
+      const data = await this.rest.get(`${this.data.baseUrl}/accounts/address`);
 
       if (JSON.stringify(data['address']) === '{}' && this.data.message === '') {
       } else {
@@ -45,7 +44,7 @@ export class AddressComponent implements OnInit {
   async updateAddress() {
     this.btnDisabled = true;
     try {
-      const res = await this.rest.post(`${this.baseUrl}/accounts/address`, this.currentAddress);
+      const res = await this.rest.post(`${this.data.baseUrl}/accounts/address`, this.currentAddress);
       if (res['success']) {
         (this.msgService.openSnackbar(res['message'], 'close'), await this.data.getProfile());
         this.router.navigate(['/profile']);

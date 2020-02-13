@@ -14,8 +14,6 @@ export class CartComponent implements OnInit {
   btnDisabled = false;
   handler: any;
   quantities = [];
-  // StripeCheckout: any;
-  baseUrl = 'http://localhost:3000/api';
   constructor(
     private router: Router,
     private rest: RestApiService,
@@ -42,7 +40,7 @@ export class CartComponent implements OnInit {
           });
         });
         try {
-          const data = await this.rest.post(`${this.baseUrl}/payment`, {
+          const data = await this.rest.post(`${this.data.baseUrl}/payment`, {
             totalPrice: this.cartTotal,
             products,
             stripeToken
@@ -90,12 +88,6 @@ export class CartComponent implements OnInit {
       this.data.message = '';
       return true;
     }
-    // else if (!this.data.user['address']) {
-    //   this.router.navigate(['/profile/address'])
-    //     .then(() => {
-    //       this.msgService.openSnackbar('Address seems invalid, please retry', 'close');
-    //     });
-    // }
   }
 
   checkout() {

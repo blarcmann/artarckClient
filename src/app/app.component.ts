@@ -13,17 +13,17 @@ export class AppComponent implements OnInit {
   isCollapsed = true;
   searchTerm = '';
   StripeCheckout: any;
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'https://artarckrc.herokuapp.com/api';
   userProfile: any;
 
-  constructor (
+  constructor(
     private router: Router,
     private rest: RestApiService,
     public data: DataService) {
-      this.data.getProfile();
-      this.data.cartItems = this.data.getCart().length;
-      console.log(data.getProfile());
-    }
+    this.data.getProfile();
+    this.data.cartItems = this.data.getCart().length;
+    console.log(data.getProfile());
+  }
 
   async ngOnInit() {
     await this.getUser();

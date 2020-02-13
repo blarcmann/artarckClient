@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   categories: any;
   fetching = false;
   naira = '₦';
-  baseUrl = 'http://localhost:3000/api';
   constructor(
     private rest: RestApiService,
     private data: DataService,
@@ -23,7 +22,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     try {
       this.fetching = true;
-      const data = await this.rest.get(`${this.baseUrl}/products`);
+      const data = await this.rest.get(`${this.data.baseUrl}/products`);
       data['success']
         ? (this.products = data['products'])
         : this.msgService.openSnackbar('Could not fetch Products', 'retry');
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit {
     }
     try {
       this.fetching = true;
-      const data = await this.rest.get(`http://localhost:3000/api/categories`);
+      const data = await this.rest.get(`${this.data.baseUrl}/categories`);
       console.log(data);
       data['success']
         ? (this.categories = data['categories'])

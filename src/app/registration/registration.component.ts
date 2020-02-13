@@ -17,13 +17,12 @@ export class RegistrationComponent implements OnInit {
   password1 = '';
   isSeller = false;
   btnDisabled = false;
-  baseUrl = 'http://localhost:3000/api';
   constructor(
     private rest: RestApiService,
     private data: DataService,
     private router: Router,
     private msgService: MessageServiceService
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
@@ -59,7 +58,7 @@ export class RegistrationComponent implements OnInit {
       if (this.validate()) {
         console.log('Data valiadated!');
         const data = await this.rest.post(
-          `${this.baseUrl}/accounts/signup`,
+          `${this.data.baseUrl}/accounts/signup`,
           {
             name: this.name,
             email: this.email,

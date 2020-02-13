@@ -10,7 +10,6 @@ import { MessageServiceService } from '../message-service.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  baseUrl = 'http://localhost:3000';
   categories: any;
   btnDisabled = false;
   newCategory: any;
@@ -30,7 +29,7 @@ export class CategoriesComponent implements OnInit {
       this.checkAddAbility = false;
     }
     try {
-      const data = await this.rest.get(`${this.baseUrl}/api/categories`);
+      const data = await this.rest.get(`${this.data.baseUrl}/categories`);
       data['success']
         ? (this.categories = data['categories'])
         : this.msgService.openSnackbar(data['message'], 'reload page');
@@ -42,7 +41,7 @@ export class CategoriesComponent implements OnInit {
   async addCategory() {
     this.btnDisabled = true;
     try {
-      const data = await this.rest.post(`${this.baseUrl}/api/categories`, { category: this.newCategory });
+      const data = await this.rest.post(`${this.data.baseUrl}/categories`, { category: this.newCategory });
       data['success']
         ? this.msgService.openSnackbar(data['message'], 'okay')
         : this.msgService.openSnackbar(data['message'], 'retry');

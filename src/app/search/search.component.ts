@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   page = 1;
   content: any;
   naira = '₦';
-  baseUrl = 'http://localhost:3000/api';
   noResult = false;
   constructor(
     private data: DataService,
@@ -47,7 +46,7 @@ export class SearchComponent implements OnInit {
   async getProducts() {
     this.content = null;
     try {
-      const data = await this.rest.get(`${this.baseUrl}/search/q?queryParam=${this.query}&page=${this.page - 1}`);
+      const data = await this.rest.get(`${this.data.baseUrl}/search/q?queryParam=${this.query}&page=${this.page - 1}`);
       console.log('data', data);
       this.data = this.content;
       data['success']

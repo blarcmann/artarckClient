@@ -10,7 +10,6 @@ import { MessageServiceService } from '../message-service.service';
 })
 export class MyProductComponent implements OnInit {
   products: any;
-  baseUrl = 'http://localhost:3000/api';
   naira = '₦';
   constructor(
     private rest: RestApiService,
@@ -20,7 +19,7 @@ export class MyProductComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const data = await this.rest.get(`${this.baseUrl}/seller/products`);
+      const data = await this.rest.get(`${this.data.baseUrl}/seller/products`);
       data['success']
         ? (this.products = data['products'])
         : this.msgService.openSnackbar(data['message'], 'close');

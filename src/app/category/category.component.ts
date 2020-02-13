@@ -16,8 +16,6 @@ export class CategoryComponent implements OnInit {
   pageSize = 12;
   offset: any;
   naira = '₦';
-  // pageEvent: PageEvent;
-  baseUrl = 'http://localhost:3000/api';
   constructor(
     private data: DataService,
     private rest: RestApiService,
@@ -45,7 +43,7 @@ export class CategoryComponent implements OnInit {
       this.category = null;
     }
     try {
-      const data = await this.rest.get(`${this.baseUrl}/categories/${this.categoryId}?page=${this.page - 1}`);
+      const data = await this.rest.get(`${this.data.baseUrl}/categories/${this.categoryId}?page=${this.page - 1}`);
       data['success']
         ? (this.category = data)
         : this.msgService.openSnackbar(data['message'], 'retry');
