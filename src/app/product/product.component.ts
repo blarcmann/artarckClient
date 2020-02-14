@@ -50,13 +50,14 @@ export class ProductComponent implements OnInit {
         rating: this.myReview.rating
       });
       if (data['success']) {
-        this.msgService.openSnackbar(data['message'], 'close');
+        this.msgService.openSnackbar('Successfully added review', 'close');
         window.location.reload();
       } else {
-        this.msgService.openSnackbar(data['message'], 'close');
+        this.msgService.openSnackbar('Something went wrong, please retry', 'close');
+        window.location.reload();
       }
     } catch (error) {
-      this.msgService.openSnackbar(error['message'], 'errhm');
+      this.msgService.openSnackbar('Ooops, lets do that again.', 'errhm');
     }
     this.btnDisabled = false;
   }

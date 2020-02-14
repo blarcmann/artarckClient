@@ -29,7 +29,7 @@
                 </a>
               </p>
               <p class="product-description">{{ product.description }}</p>
-              <p class="product-owner"> <span>by: {{ product.owner.name }}</span></p>
+              <p *ngIf="product.owner" class="product-owner"> <span>by: {{ product.owner.name }}</span></p>
             </div>
             <div class="add-to-cart text-center">
               <button class="standard-btn dark-bg" (click)="addToCart()">Add to Cart</button>

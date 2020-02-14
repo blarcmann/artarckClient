@@ -19,7 +19,7 @@
               <div class="right-col">
                 <div class="item-image">
                   <a routerLink="/product/{{ item._id }}">
-                    <img src="{{ item.image }}" alt="{{ item.owner.name }} image" class="img-fluid">
+                    <img src="{{ item.image }}" alt="{{ item.title }} image" class="img-fluid">
                   </a>
                 </div>
                 <div class="item-others">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="rightmost">
                   <div class="product-price">
-                    <span class="pprice">{{ item.price | currency }}</span>
+                    <span class="pprice">{{ item.price | currency: naira}}</span>
                   </div>
                   <a routerLink="/" class="buy-later">Save for later</a>
                   <div class="del">
@@ -65,7 +65,7 @@
               <div class="title">Order Sub-Total</div>
               <span class="tag">{{cartItems.length}} Item(s)</span>
             </div>
-            <h3 class="value">{{ cartTotal | currency }}</h3>
+            <h3 class="value">{{ cartTotal | currency: naira }}</h3>
           </div>
           <div class="checkout-btn">
             <button class="checkout" (click)="checkout()">CHECKOUT</button>

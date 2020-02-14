@@ -32,10 +32,9 @@ export class AppComponent implements OnInit {
   async getUser() {
     try {
       const data = await this.rest.get(`${this.baseUrl}/accounts/profile`);
-      console.log(data);
       data['success']
         ? this.userProfile = data['user']
-        : this.data.error('Can\'t seem to get your info, pls FO')
+        : this.data.error('Can\'t seem to get your info, pls');
     } catch (error) {
       this.data.error('Failed to get user data ATM');
     }

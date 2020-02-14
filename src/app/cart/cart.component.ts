@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   btnDisabled = false;
   handler: any;
   quantities = [];
+  naira = '₦';
   constructor(
     private router: Router,
     private rest: RestApiService,
